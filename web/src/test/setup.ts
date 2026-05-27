@@ -26,6 +26,29 @@ if (typeof window !== "undefined") {
   window.scrollTo = (() => {}) as typeof window.scrollTo;
 }
 
+// Polyfill IntersectionObserver (TableOfContents uses it)
+if (typeof window !== "undefined" && !window.IntersectionObserver) {
+  class MockIntersectionObserver {
+    observe = () => {};
+    unobserve = () => {};
+    disconnect = () => {};
+    takeRecords = () => [];
+    root = null;
+    rootMargin = "";
+    thresholds: ReadonlyArray<number> = [];
+  }
+  Object.defineProperty(window, "IntersectionObserver", {
+    writable: true,
+    configurable: true,
+    value: MockIntersectionObserver,
+  });
+  Object.defineProperty(globalThis, "IntersectionObserver", {
+    writable: true,
+    configurable: true,
+    value: MockIntersectionObserver,
+  });
+}
+
 // Polyfill for matchMedia
 if (typeof window !== "undefined" && !window.matchMedia) {
   Object.defineProperty(window, "matchMedia", {

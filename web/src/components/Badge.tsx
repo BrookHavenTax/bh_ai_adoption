@@ -10,13 +10,20 @@ type BadgeVariant =
   | "purple";
 
 const variantClasses: Record<BadgeVariant, string> = {
-  neutral: "bg-slate-100 text-slate-700 border-slate-200",
-  brand: "bg-brand-100 text-brand-800 border-brand-200",
-  green: "bg-green-100 text-green-800 border-green-200",
-  yellow: "bg-amber-100 text-amber-800 border-amber-200",
-  red: "bg-rose-100 text-rose-800 border-rose-200",
-  blue: "bg-sky-100 text-sky-800 border-sky-200",
-  purple: "bg-violet-100 text-violet-800 border-violet-200",
+  neutral:
+    "bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700",
+  brand:
+    "bg-brand-100 text-brand-800 border-brand-200 dark:bg-brand-900/40 dark:text-brand-300 dark:border-brand-800",
+  green:
+    "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800",
+  yellow:
+    "bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800",
+  red:
+    "bg-rose-100 text-rose-800 border-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:border-rose-800",
+  blue:
+    "bg-sky-100 text-sky-800 border-sky-200 dark:bg-sky-900/30 dark:text-sky-300 dark:border-sky-800",
+  purple:
+    "bg-violet-100 text-violet-800 border-violet-200 dark:bg-violet-900/30 dark:text-violet-300 dark:border-violet-800",
 };
 
 interface BadgeProps {

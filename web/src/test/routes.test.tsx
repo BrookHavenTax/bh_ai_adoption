@@ -172,16 +172,44 @@ describe("Tutorials index filtering", () => {
   });
 });
 
-describe("Search", () => {
-  it("typing in the header search shows results", async () => {
+describe("Command palette", () => {
+  it("opens via the header search trigger and shows results when querying", async () => {
     const user = userEvent.setup();
     renderWithRouter(<App />, { initialEntries: ["/"] });
 
-    // Pick any search input (there's one in header for desktop, one inline for mobile)
-    const inputs = screen.getAllByTestId("search-input");
-    await user.type(inputs[0], "email");
+    // Click the desktop search trigger (the input-styled button in the header)
+    const trigger = screen.getByTestId("search-trigger");
+    await user.click(trigger);
 
-    // Search results dropdown appears
-    expect(screen.getAllByTestId("search-results").length).toBeGreaterThan(0);
+    const palette = await screen.findByTestId("command-palette");
+    expect(palette).toBeInTheDocument();
+
+    const input = screen.getByTestId("command-palette-input");
+    await user.type(input, "email");
+
+    // At least one result item should appear referencing the email tutorial
+    expect(
+      screen.getByTestId("command-item-tutorial-email-first-draft"),
+    ).toBeInTheDocument();
+  });
+
+  it("opens via Ctrl+K keyboard shortcut", async () => {
+    const user = userEvent.setup();
+    renderWithRouter(<App />, { initialEntries: ["/"] });
+
+    expect(screen.queryByTestId("command-palette")).not.toBeInTheDocument();
+    await user.keyboard("{Control>}k{/Control}");
+    expect(await screen.findByTestId("command-palette")).toBeInTheDocument();
+  });
+
+  it("closes on Escape", async () => {
+    const user = userEvent.setup();
+    renderWithRouter(<App />, { initialEntries: ["/"] });
+
+    await user.click(screen.getByTestId("search-trigger"));
+    expect(screen.getByTestId("command-palette")).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+    expect(screen.queryByTestId("command-palette")).not.toBeInTheDocument();
   });
 });

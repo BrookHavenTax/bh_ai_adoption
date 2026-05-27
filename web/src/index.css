@@ -1,65 +1,353 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (toggled by adding `.dark` to <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-brand-50: oklch(0.98 0.02 90);
-  --color-brand-100: oklch(0.96 0.04 90);
-  --color-brand-200: oklch(0.92 0.08 90);
-  --color-brand-300: oklch(0.86 0.13 88);
-  --color-brand-400: oklch(0.80 0.16 85);
-  --color-brand-500: oklch(0.74 0.17 80);
-  --color-brand-600: oklch(0.65 0.18 75);
-  --color-brand-700: oklch(0.55 0.16 70);
-  --color-brand-800: oklch(0.42 0.13 65);
-  --color-brand-900: oklch(0.30 0.10 60);
+  /* Refined amber-leaning brand palette */
+  --color-brand-50: oklch(0.97 0.03 85);
+  --color-brand-100: oklch(0.94 0.06 85);
+  --color-brand-200: oklch(0.90 0.10 85);
+  --color-brand-300: oklch(0.83 0.14 85);
+  --color-brand-400: oklch(0.76 0.16 80);
+  --color-brand-500: oklch(0.69 0.17 75);
+  --color-brand-600: oklch(0.62 0.16 70);
+  --color-brand-700: oklch(0.54 0.14 65);
+  --color-brand-800: oklch(0.42 0.11 60);
+  --color-brand-900: oklch(0.30 0.08 55);
+  --color-brand-950: oklch(0.20 0.05 50);
+
+  /* Custom animations */
+  --animate-fade-in: fade-in 0.25s ease-out;
+  --animate-slide-up: slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-scale-in: scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-shimmer: shimmer 1.5s infinite linear;
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+/* Base */
 html {
   scroll-behavior: smooth;
 }
 
+html.dark {
+  color-scheme: dark;
+}
+
 body {
+  font-family:
+    "Inter", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: theme(colors.slate.50);
+  color: theme(colors.slate.900);
+  transition:
+    background-color 200ms,
+    color 200ms;
+}
+
+html.dark body {
+  background-color: theme(colors.slate.950);
+  color: theme(colors.slate.100);
+}
+
+/* Focus ring — visible and high-contrast in both modes */
+*:focus-visible {
+  outline: 2px solid theme(colors.brand.500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+html.dark *:focus-visible {
+  outline-color: theme(colors.brand.400);
+}
+
+/* Selection */
+::selection {
+  background-color: theme(colors.brand.200);
+  color: theme(colors.slate.900);
+}
+
+html.dark ::selection {
+  background-color: theme(colors.brand.700);
+  color: theme(colors.slate.50);
+}
+
+/* Scrollbar (subtle, modern) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: theme(colors.slate.300);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: theme(colors.slate.400);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: theme(colors.slate.700);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: theme(colors.slate.600);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Skip link — visible only on focus */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background-color: theme(colors.brand.500);
+  color: theme(colors.slate.900);
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+.skip-link:focus {
+  left: 1rem;
+}
+
+/* ---- Prose ---- */
+/* Reused on markdown blocks inside cards, callouts, and main content. */
+.prose-bh {
+  color: theme(colors.slate.700);
+}
+html.dark .prose-bh {
+  color: theme(colors.slate.300);
 }
 
 .prose-bh h2 {
-  @apply text-2xl font-bold mt-10 mb-3 text-slate-900 scroll-mt-24;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: theme(colors.slate.900);
+  scroll-margin-top: 6rem;
+  letter-spacing: -0.01em;
 }
+html.dark .prose-bh h2 {
+  color: theme(colors.slate.50);
+}
+
 .prose-bh h3 {
-  @apply text-xl font-semibold mt-8 mb-2 text-slate-900 scroll-mt-24;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: theme(colors.slate.900);
+  scroll-margin-top: 6rem;
 }
+html.dark .prose-bh h3 {
+  color: theme(colors.slate.50);
+}
+
 .prose-bh p {
-  @apply text-slate-700 leading-relaxed mb-4;
+  line-height: 1.65;
+  margin-bottom: 1rem;
 }
+
 .prose-bh ul {
-  @apply list-disc pl-6 mb-4 space-y-1 text-slate-700;
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
 }
+.prose-bh ul li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .prose-bh ol {
-  @apply list-decimal pl-6 mb-4 space-y-1 text-slate-700;
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
 }
+.prose-bh ol li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .prose-bh strong {
-  @apply font-semibold text-slate-900;
+  font-weight: 600;
+  color: theme(colors.slate.900);
 }
+html.dark .prose-bh strong {
+  color: theme(colors.slate.50);
+}
+
 .prose-bh code {
-  @apply bg-slate-100 px-1.5 py-0.5 rounded text-sm font-mono text-slate-800;
+  background-color: theme(colors.slate.100);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family:
+    ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+  color: theme(colors.slate.800);
 }
+html.dark .prose-bh code {
+  background-color: theme(colors.slate.800);
+  color: theme(colors.slate.200);
+}
+
 .prose-bh pre {
-  @apply bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-sm mb-4;
+  background-color: theme(colors.slate.900);
+  color: theme(colors.slate.100);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  font-family:
+    ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Consolas, monospace;
+  line-height: 1.6;
+}
+html.dark .prose-bh pre {
+  background-color: theme(colors.slate.800);
+  border: 1px solid theme(colors.slate.700);
 }
 .prose-bh pre code {
-  @apply bg-transparent p-0 text-slate-100;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
 }
+
 .prose-bh a {
-  @apply text-brand-700 underline underline-offset-2 hover:text-brand-800;
+  color: theme(colors.brand.700);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 150ms;
 }
+.prose-bh a:hover {
+  color: theme(colors.brand.800);
+}
+html.dark .prose-bh a {
+  color: theme(colors.brand.400);
+}
+html.dark .prose-bh a:hover {
+  color: theme(colors.brand.300);
+}
+
 .prose-bh table {
-  @apply w-full text-sm mb-4 border-collapse;
+  width: 100%;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+}
+.prose-bh thead {
+  display: table-header-group;
+}
+.prose-bh tbody {
+  display: table-row-group;
+}
+.prose-bh tr {
+  display: table-row;
 }
 .prose-bh th {
-  @apply text-left font-semibold py-2 px-3 border-b-2 border-slate-300 text-slate-900;
+  text-align: left;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid theme(colors.slate.300);
+  color: theme(colors.slate.900);
+  display: table-cell;
+}
+html.dark .prose-bh th {
+  border-bottom-color: theme(colors.slate.600);
+  color: theme(colors.slate.100);
 }
 .prose-bh td {
-  @apply py-2 px-3 border-b border-slate-200 text-slate-700;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid theme(colors.slate.200);
+  display: table-cell;
+  vertical-align: top;
 }
+html.dark .prose-bh td {
+  border-bottom-color: theme(colors.slate.800);
+}
+
 .prose-bh blockquote {
-  @apply border-l-4 border-brand-400 pl-4 italic text-slate-600 my-4;
+  border-left: 4px solid theme(colors.brand.400);
+  padding-left: 1rem;
+  font-style: italic;
+  color: theme(colors.slate.600);
+  margin: 1rem 0;
+}
+html.dark .prose-bh blockquote {
+  color: theme(colors.slate.400);
+}
+
+.prose-bh hr {
+  border: none;
+  border-top: 1px solid theme(colors.slate.200);
+  margin: 2rem 0;
+}
+html.dark .prose-bh hr {
+  border-top-color: theme(colors.slate.800);
+}
+
+/* Reduce motion preference respected */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,19 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import { SearchBar } from "./SearchBar";
+import { Menu, X, Search } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { to: "/", label: "Home", end: true },
-  { to: "/themes", label: "By theme" },
-  { to: "/roles", label: "By role" },
-  { to: "/tools", label: "By tool" },
-  { to: "/tutorials", label: "All tutorials" },
+  { to: "/themes", label: "Themes" },
+  { to: "/roles", label: "Roles" },
+  { to: "/tools", label: "Tools" },
+  { to: "/tutorials", label: "Tutorials" },
   { to: "/about", label: "About" },
 ];
 
-export function Layout() {
+interface LayoutProps {
+  onOpenPalette: () => void;
+}
+
+export function Layout({ onOpenPalette }: LayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
@@ -22,31 +25,34 @@ export function Layout() {
     setMobileOpen(false);
   }, [location.pathname]);
 
+  // Detect Mac vs others for the shortcut display
+  const isMac =
+    typeof navigator !== "undefined" &&
+    /Mac|iPhone|iPod|iPad/i.test(navigator.platform);
+
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+      <header className="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 gap-4">
             <Link
               to="/"
-              className="flex items-center gap-2 font-bold text-slate-900 flex-shrink-0"
+              className="flex items-center gap-2 font-bold flex-shrink-0 group"
               data-testid="logo-link"
             >
               <span
-                className="w-8 h-8 rounded-lg bg-slate-900 text-amber-400 flex items-center justify-center text-sm font-bold"
+                className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-100 dark:to-slate-300 text-amber-400 dark:text-amber-600 flex items-center justify-center text-sm font-bold shadow-sm group-hover:shadow-md transition-shadow"
                 aria-hidden="true"
               >
                 BH
               </span>
-              <span className="hidden sm:inline">AI Adoption Hub</span>
+              <span className="hidden sm:inline text-slate-900 dark:text-slate-100">
+                AI Adoption Hub
+              </span>
             </Link>
 
-            <div className="hidden md:flex flex-1 justify-center max-w-md mx-4">
-              <SearchBar />
-            </div>
-
             <nav
-              className="hidden lg:flex items-center gap-1"
+              className="hidden lg:flex items-center gap-0.5"
               aria-label="Primary"
             >
               {navItems.map((item) => (
@@ -55,38 +61,69 @@ export function Layout() {
                   to={item.to}
                   end={item.end}
                   className={({ isActive }) =>
-                    `px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+                    `relative px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
                       isActive
-                        ? "bg-brand-100 text-brand-800"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                        ? "text-slate-900 dark:text-slate-50"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800/60"
                     }`
                   }
                   data-testid={`nav-${item.to.replace("/", "") || "home"}`}
                 >
-                  {item.label}
+                  {({ isActive }) => (
+                    <>
+                      {item.label}
+                      {isActive && (
+                        <span
+                          className="absolute left-1/2 -translate-x-1/2 bottom-0 w-6 h-0.5 bg-brand-500 rounded-full"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </>
+                  )}
                 </NavLink>
               ))}
             </nav>
 
-            <button
-              type="button"
-              className="lg:hidden p-2 -mr-2 text-slate-700"
-              onClick={() => setMobileOpen((o) => !o)}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-              data-testid="mobile-menu-toggle"
-            >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          </div>
-
-          <div className="md:hidden pb-3">
-            <SearchBar />
+            <div className="flex items-center gap-1 flex-shrink-0">
+              <button
+                type="button"
+                onClick={onOpenPalette}
+                className="hidden md:flex items-center gap-2 px-3 py-1.5 text-sm text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg transition-colors w-56"
+                aria-label="Open search"
+                data-testid="search-trigger"
+              >
+                <Search size={14} aria-hidden="true" />
+                <span className="flex-1 text-left">Search…</span>
+                <kbd className="ml-auto px-1.5 py-0.5 text-[10px] font-mono bg-white dark:bg-slate-900 text-slate-400 dark:text-slate-500 rounded border border-slate-200 dark:border-slate-700">
+                  {isMac ? "⌘K" : "Ctrl K"}
+                </kbd>
+              </button>
+              <button
+                type="button"
+                onClick={onOpenPalette}
+                className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800 transition-colors"
+                aria-label="Open search"
+                data-testid="search-trigger-mobile"
+              >
+                <Search size={18} aria-hidden="true" />
+              </button>
+              <ThemeToggle />
+              <button
+                type="button"
+                className="lg:hidden flex items-center justify-center w-9 h-9 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800 transition-colors"
+                onClick={() => setMobileOpen((o) => !o)}
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileOpen}
+                data-testid="mobile-menu-toggle"
+              >
+                {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+              </button>
+            </div>
           </div>
 
           {mobileOpen && (
             <nav
-              className="lg:hidden border-t border-slate-200 py-2"
+              className="lg:hidden border-t border-slate-200 dark:border-slate-800 py-2 animate-fade-in"
               aria-label="Mobile"
               data-testid="mobile-nav"
             >
@@ -98,8 +135,8 @@ export function Layout() {
                   className={({ isActive }) =>
                     `block px-3 py-2 text-sm font-medium rounded-md ${
                       isActive
-                        ? "bg-brand-100 text-brand-800"
-                        : "text-slate-700 hover:bg-slate-100"
+                        ? "bg-brand-100 dark:bg-brand-900/30 text-brand-800 dark:text-brand-200"
+                        : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                     }`
                   }
                 >
@@ -111,12 +148,15 @@ export function Layout() {
         </div>
       </header>
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <main
+        id="main-content"
+        className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 animate-fade-in"
+      >
         <Outlet />
       </main>
 
-      <footer className="bg-white border-t border-slate-200 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-500">
+      <footer className="border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/50 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-500 dark:text-slate-400">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
               Brookhaven AI Adoption Hub · Internal use only · Built with Claude

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Check, Copy } from "lucide-react";
+import { useToast } from "@/lib/toast";
 
 interface PromptBlockProps {
   prompt: string;
@@ -8,11 +9,13 @@ interface PromptBlockProps {
 
 export function PromptBlock({ prompt, label = "Copy prompt" }: PromptBlockProps) {
   const [copied, setCopied] = useState(false);
+  const { toast } = useToast();
 
   async function handleCopy() {
     try {
       await navigator.clipboard.writeText(prompt);
       setCopied(true);
+      toast("Prompt copied to clipboard", { variant: "success" });
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // Fallback for browsers without Clipboard API
@@ -23,9 +26,14 @@ export function PromptBlock({ prompt, label = "Copy prompt" }: PromptBlockProps)
       document.body.appendChild(ta);
       ta.select();
       try {
-        document.execCommand("copy");
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        const ok = document.execCommand("copy");
+        if (ok) {
+          setCopied(true);
+          toast("Prompt copied to clipboard", { variant: "success" });
+          setTimeout(() => setCopied(false), 2000);
+        } else {
+          toast("Could not copy — please copy manually", { variant: "warning" });
+        }
       } finally {
         document.body.removeChild(ta);
       }
@@ -39,7 +47,11 @@ export function PromptBlock({ prompt, label = "Copy prompt" }: PromptBlockProps)
           type="button"
           onClick={handleCopy}
           aria-label={copied ? "Copied" : label}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-100 text-xs font-medium rounded-md transition-colors"
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-all shadow-sm ${
+            copied
+              ? "bg-emerald-600 text-white"
+              : "bg-slate-700 hover:bg-slate-600 text-slate-100 dark:bg-slate-700 dark:hover:bg-slate-600"
+          }`}
         >
           {copied ? (
             <>
@@ -54,7 +66,10 @@ export function PromptBlock({ prompt, label = "Copy prompt" }: PromptBlockProps)
           )}
         </button>
       </div>
-      <pre className="bg-slate-900 text-slate-100 rounded-lg p-4 pr-20 overflow-x-auto text-sm whitespace-pre-wrap break-words font-mono leading-relaxed">
+      <div className="absolute top-2 left-3 z-10 text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold pointer-events-none">
+        Prompt
+      </div>
+      <pre className="bg-slate-900 dark:bg-slate-900 border border-slate-800 text-slate-100 rounded-lg pt-8 pb-4 px-4 pr-20 overflow-x-auto text-sm whitespace-pre-wrap break-words leading-relaxed font-mono">
         <code>{prompt}</code>
       </pre>
     </div>

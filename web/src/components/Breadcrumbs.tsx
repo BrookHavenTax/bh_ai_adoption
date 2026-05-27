@@ -10,7 +10,7 @@ export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="flex items-center gap-1.5 text-sm text-slate-500 mb-6 flex-wrap"
+      className="flex items-center gap-1.5 text-sm text-slate-500 dark:text-slate-400 mb-6 flex-wrap"
     >
       {crumbs.map((crumb, idx) => {
         const isLast = idx === crumbs.length - 1;
@@ -19,17 +19,24 @@ export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
             {idx > 0 && (
               <ChevronRight
                 size={14}
-                className="text-slate-400"
+                className="text-slate-400 dark:text-slate-600"
                 aria-hidden="true"
               />
             )}
             {crumb.to && !isLast ? (
-              <Link to={crumb.to} className="hover:text-brand-700">
+              <Link
+                to={crumb.to}
+                className="hover:text-brand-700 dark:hover:text-brand-300 transition-colors"
+              >
                 {crumb.label}
               </Link>
             ) : (
               <span
-                className={isLast ? "text-slate-900 font-medium" : ""}
+                className={
+                  isLast
+                    ? "text-slate-900 dark:text-slate-100 font-medium"
+                    : ""
+                }
                 aria-current={isLast ? "page" : undefined}
               >
                 {crumb.label}

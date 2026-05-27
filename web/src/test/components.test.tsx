@@ -4,10 +4,11 @@ import { PromptBlock } from "@/components/PromptBlock";
 import { Callout } from "@/components/Callout";
 import { Badge, DifficultyBadge, EffortBadge } from "@/components/Badge";
 import { Markdown } from "@/components/Markdown";
+import { renderWithProviders } from "./utils";
 
 describe("PromptBlock", () => {
   it("renders the prompt text", () => {
-    render(<PromptBlock prompt="Hello, Claude" />);
+    renderWithProviders(<PromptBlock prompt="Hello, Claude" />);
     expect(screen.getByText("Hello, Claude")).toBeInTheDocument();
   });
 
@@ -22,7 +23,7 @@ describe("PromptBlock", () => {
       writable: true,
     });
 
-    render(<PromptBlock prompt="Test prompt here" />);
+    renderWithProviders(<PromptBlock prompt="Test prompt here" />);
     const button = screen.getByRole("button", { name: /copy/i });
     fireEvent.click(button);
 
@@ -32,7 +33,7 @@ describe("PromptBlock", () => {
   });
 
   it("shows 'Copied' state after click", async () => {
-    render(<PromptBlock prompt="Test" />);
+    renderWithProviders(<PromptBlock prompt="Test" />);
     const button = screen.getByRole("button", { name: /copy/i });
     fireEvent.click(button);
 
