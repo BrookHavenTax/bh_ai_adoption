@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: oklch(0.98 0.02 90);
+  --color-brand-100: oklch(0.96 0.04 90);
+  --color-brand-200: oklch(0.92 0.08 90);
+  --color-brand-300: oklch(0.86 0.13 88);
+  --color-brand-400: oklch(0.80 0.16 85);
+  --color-brand-500: oklch(0.74 0.17 80);
+  --color-brand-600: oklch(0.65 0.18 75);
+  --color-brand-700: oklch(0.55 0.16 70);
+  --color-brand-800: oklch(0.42 0.13 65);
+  --color-brand-900: oklch(0.30 0.10 60);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "ss01", "cv11";
+}
+
+.prose-bh h2 {
+  @apply text-2xl font-bold mt-10 mb-3 text-slate-900 scroll-mt-24;
+}
+.prose-bh h3 {
+  @apply text-xl font-semibold mt-8 mb-2 text-slate-900 scroll-mt-24;
+}
+.prose-bh p {
+  @apply text-slate-700 leading-relaxed mb-4;
+}
+.prose-bh ul {
+  @apply list-disc pl-6 mb-4 space-y-1 text-slate-700;
+}
+.prose-bh ol {
+  @apply list-decimal pl-6 mb-4 space-y-1 text-slate-700;
+}
+.prose-bh strong {
+  @apply font-semibold text-slate-900;
+}
+.prose-bh code {
+  @apply bg-slate-100 px-1.5 py-0.5 rounded text-sm font-mono text-slate-800;
+}
+.prose-bh pre {
+  @apply bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-sm mb-4;
+}
+.prose-bh pre code {
+  @apply bg-transparent p-0 text-slate-100;
+}
+.prose-bh a {
+  @apply text-brand-700 underline underline-offset-2 hover:text-brand-800;
+}
+.prose-bh table {
+  @apply w-full text-sm mb-4 border-collapse;
+}
+.prose-bh th {
+  @apply text-left font-semibold py-2 px-3 border-b-2 border-slate-300 text-slate-900;
+}
+.prose-bh td {
+  @apply py-2 px-3 border-b border-slate-200 text-slate-700;
+}
+.prose-bh blockquote {
+  @apply border-l-4 border-brand-400 pl-4 italic text-slate-600 my-4;
+}
