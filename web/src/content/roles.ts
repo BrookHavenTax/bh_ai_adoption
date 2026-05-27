@@ -18,6 +18,8 @@ export const roles: Role[] = [
       "dropbox-dedup",
       "checklist-auto-update",
       "pdf-summary-30sec",
+      "claude-skills-101",
+      "cowork-outlook-eod-digest",
     ],
   },
   {
@@ -37,6 +39,8 @@ export const roles: Role[] = [
       "automation-diagnostics",
       "monday-audit-automation",
       "monday-safe-automation",
+      "claude-cowork-101",
+      "cowork-monday-standup",
     ],
   },
   {
@@ -52,8 +56,11 @@ export const roles: Role[] = [
       "Build a smart reminder system that surfaces what's actually at risk this week, plus a Claude-powered social media drafting workflow.",
     recommendedTutorialSlugs: [
       "smart-compliance-reminders",
+      "skill-deadline-watcher",
+      "skill-daily-briefing",
       "social-media-drafting",
       "pdf-summary-30sec",
+      "claude-skills-101",
     ],
   },
   {
@@ -75,6 +82,9 @@ export const roles: Role[] = [
       "cumulative-client-note",
       "tax-source-doc-checklist",
       "claude-skill-bh-voice",
+      "claude-skills-101",
+      "skill-client-context",
+      "cowork-outlook-eod-digest",
     ],
   },
   {
@@ -100,6 +110,9 @@ export const roles: Role[] = [
       "qbo-month-close",
       "dropbox-semantic-search",
       "email-first-draft",
+      "claude-cowork-101",
+      "skill-client-context",
+      "skill-deadline-watcher",
     ],
   },
   {
@@ -122,6 +135,9 @@ export const roles: Role[] = [
       "contract-redline",
       "dropbox-naming-convention",
       "monday-safe-automation",
+      "claude-skills-101",
+      "skill-client-context",
+      "skill-meeting-prep",
     ],
   },
   {
@@ -139,6 +155,9 @@ export const roles: Role[] = [
       "strategy-thinking-partner",
       "pdf-summary-30sec",
       "email-first-draft",
+      "claude-skills-101",
+      "claude-cowork-101",
+      "skill-meeting-prep",
     ],
   },
   {
@@ -158,6 +177,10 @@ export const roles: Role[] = [
       "shared-inbox-triage",
       "smart-compliance-reminders",
       "dropbox-semantic-search",
+      "claude-cowork-101",
+      "cowork-outlook-eod-digest",
+      "cowork-monday-standup",
+      "skill-deadline-watcher",
     ],
   },
 ];

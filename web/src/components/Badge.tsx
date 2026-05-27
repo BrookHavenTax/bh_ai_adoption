@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { TutorialFormat } from "@/content/types";
 
 type BadgeVariant =
   | "neutral"
@@ -70,4 +71,30 @@ export function EffortBadge({
           ? "red"
           : "purple";
   return <Badge variant={variant}>Effort: {effort}</Badge>;
+}
+
+const formatToVariant: Record<TutorialFormat, BadgeVariant> = {
+  Skill: "purple",
+  Cowork: "brand",
+  Project: "blue",
+  Prompt: "green",
+  Script: "red",
+  Process: "neutral",
+};
+
+const formatLabels: Record<TutorialFormat, string> = {
+  Skill: "Claude Skill",
+  Cowork: "Cowork",
+  Project: "Project",
+  Prompt: "Prompt",
+  Script: "Script",
+  Process: "Process",
+};
+
+export function FormatBadge({ format }: { format: TutorialFormat }) {
+  return (
+    <Badge variant={formatToVariant[format]} className="font-semibold">
+      {formatLabels[format]}
+    </Badge>
+  );
 }

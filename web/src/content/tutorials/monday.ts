@@ -6,6 +6,7 @@ export const mondayAuditAutomation: Tutorial = {
   subtitle:
     "Diagnose first. Before you build anything new, find what's actually breaking.",
   emoji: "🩺",
+  format: "Prompt",
   difficulty: "Intermediate",
   timeEstimate: "20 min per automation",
   audienceRoleIds: [
@@ -126,6 +127,7 @@ export const mondaySafeAutomation: Tutorial = {
   subtitle:
     "Replace fragile Monday automations with debuggable scripts that propose, never auto-act, on client-facing work.",
   emoji: "🛡️",
+  format: "Script",
   difficulty: "Advanced",
   timeEstimate: "1-2 hours per automation to migrate",
   audienceRoleIds: [

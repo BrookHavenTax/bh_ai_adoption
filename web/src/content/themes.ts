@@ -24,7 +24,13 @@ export const themes: Theme[] = [
 **The 30-second workflow:** see a routine email → highlight or paste → "Draft a reply that…" → review, edit, send. Replace "I need to think about how to phrase this" with "I need to check what Claude wrote."`,
     notSolvable:
       "Native auto-drafting inside Outlook desktop. Microsoft Copilot for M365 does this; Claude doesn't have a first-party Outlook plugin yet.",
-    tutorialSlugs: ["email-first-draft", "claude-skill-bh-voice", "shared-inbox-triage"],
+    tutorialSlugs: [
+      "email-first-draft",
+      "claude-skill-bh-voice",
+      "shared-inbox-triage",
+      "claude-skills-101",
+      "cowork-outlook-eod-digest",
+    ],
   },
   {
     id: "dropbox-hygiene",
@@ -144,7 +150,11 @@ export const themes: Theme[] = [
 **What smart looks like:** instead of *"GA sales tax due on the 15th,"* Claude says *"GA sales tax is due in 5 days and the prior-month JE hasn't been posted yet — close that first."* Reminders with context.
 
 **What works today:** a daily Claude job reads Monday boards + calendar + inbox → 1-paragraph "what's at risk, what's overdue, what hasn't started" digest → posts to Telegram.`,
-    tutorialSlugs: ["smart-compliance-reminders"],
+    tutorialSlugs: [
+      "smart-compliance-reminders",
+      "skill-daily-briefing",
+      "skill-deadline-watcher",
+    ],
   },
   {
     id: "cross-entity-comms",
@@ -164,7 +174,15 @@ export const themes: Theme[] = [
 - **Brookhaven Telegram bot** — DM "what's the status of TKI close?" → bot queries Monday + Dropbox + QBO → answers
 - **Auto-routed handoff messages** — when a Monday item flips from "Legal: complete" to "Tax: ready," Claude generates the handoff with all needed context
 - **Daily team digest** — 1-paragraph "yesterday + today" per team, posted each morning`,
-    tutorialSlugs: ["telegram-bot-bh", "teams-action-items", "shared-inbox-triage"],
+    tutorialSlugs: [
+      "telegram-bot-bh",
+      "teams-action-items",
+      "shared-inbox-triage",
+      "claude-cowork-101",
+      "cowork-monday-standup",
+      "skill-meeting-prep",
+      "skill-client-context",
+    ],
   },
   {
     id: "time-tracking",

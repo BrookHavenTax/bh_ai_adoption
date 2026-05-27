@@ -6,6 +6,7 @@ export const qboBillAnomaly: Tutorial = {
   subtitle:
     "Stop manually clicking through 14 recurring bills that haven't changed in 6 months. Approve the routine in a batch; review only the anomalies.",
   emoji: "🚨",
+  format: "Cowork",
   difficulty: "Intermediate",
   timeEstimate: "1 hour setup, saves ~3-5 hours/month per entity",
   audienceRoleIds: ["accounting-lead"],
@@ -129,6 +130,7 @@ export const qboArFollowup: Tutorial = {
   subtitle:
     "Turn 'who do I need to chase this week' into a stack of drafted emails calibrated to each client's payment history.",
   emoji: "💸",
+  format: "Cowork",
   difficulty: "Intermediate",
   timeEstimate: "45 min setup, saves ~2 hours/week",
   audienceRoleIds: ["accounting-lead", "client-resource-specialist"],
@@ -231,6 +233,7 @@ export const qboMonthClose: Tutorial = {
   title: "Month-end close on one entity in 20 minutes",
   subtitle: "Claude as your prep + review partner for the monthly close.",
   emoji: "📅",
+  format: "Cowork",
   difficulty: "Intermediate",
   timeEstimate: "1 hour setup, ~20 min/entity/month after",
   audienceRoleIds: ["accounting-lead"],

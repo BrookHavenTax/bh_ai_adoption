@@ -25,6 +25,7 @@ Nothing leaves your browser unless you click send. The reply lives in your Outlo
       "email-first-draft",
       "claude-skill-bh-voice",
       "shared-inbox-triage",
+      "cowork-outlook-eod-digest",
     ],
   },
   {
@@ -43,7 +44,12 @@ Nothing leaves your browser unless you click send. The reply lives in your Outlo
 All of these are 50-200 lines of Python with Claude as the reasoning layer.`,
     limitations:
       "DMs are private — the bot can only read messages addressed to it or sent in channels it's invited to. By design.",
-    recommendedTutorialSlugs: ["telegram-bot-bh", "smart-compliance-reminders"],
+    recommendedTutorialSlugs: [
+      "telegram-bot-bh",
+      "smart-compliance-reminders",
+      "skill-daily-briefing",
+      "cowork-monday-standup",
+    ],
   },
   {
     id: "dropbox",
@@ -115,6 +121,8 @@ For legal and tax work, Claude's reading is stronger than Adobe's built-in AI fo
       "monday-audit-automation",
       "monday-safe-automation",
       "automation-diagnostics",
+      "cowork-monday-standup",
+      "skill-deadline-watcher",
     ],
   },
   {
@@ -134,7 +142,7 @@ Save a Claude prompt template that takes a Teams transcript and outputs in the s
 **Teams' own AI Recap** is good for general summaries — Claude wins when you need structured output (e.g., "list every commitment Crystal made, with deadlines").`,
     limitations:
       "Real-time live AI in Teams requires Microsoft Copilot (separate paid plan). Post-meeting Claude workflow covers most of the value without that.",
-    recommendedTutorialSlugs: ["teams-action-items"],
+    recommendedTutorialSlugs: ["teams-action-items", "skill-meeting-prep"],
   },
   {
     id: "qbo",
@@ -167,6 +175,7 @@ Save a Claude prompt template that takes a Teams transcript and outputs in the s
       "qbo-bill-anomaly",
       "qbo-ar-followup",
       "qbo-month-close",
+      "claude-cowork-101",
     ],
   },
 ];

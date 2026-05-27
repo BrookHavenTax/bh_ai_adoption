@@ -6,6 +6,7 @@ export const strategyThinkingPartner: Tutorial = {
   subtitle:
     "Stress-test ideas, generate alternatives, and structure complex decisions — without convening a meeting.",
   emoji: "🧠",
+  format: "Prompt",
   difficulty: "Beginner",
   timeEstimate: "Pick up immediately, hours of compounding leverage",
   audienceRoleIds: ["strategy-lead", "financial-advisor", "legal-ops-director"],
@@ -107,6 +108,7 @@ export const automationDiagnostics: Tutorial = {
   title: "Diagnose broken integrations with Claude",
   subtitle: "Paste the broken flow, get the diagnosis. The Financial Advisor's wish-list item.",
   emoji: "🔧",
+  format: "Prompt",
   difficulty: "Intermediate",
   timeEstimate: "20 min per broken integration",
   audienceRoleIds: ["financial-advisor", "accounting-lead", "admin-manager"],
@@ -222,6 +224,7 @@ export const sharedInboxTriage: Tutorial = {
   title: "Shared inbox triage with Claude in Chrome",
   subtitle: "Route incoming email to the right person in 5 minutes instead of 30.",
   emoji: "📨",
+  format: "Prompt",
   difficulty: "Beginner",
   timeEstimate: "15 min setup, saves 20+ min/day",
   audienceRoleIds: ["admin-manager", "client-resource-specialist"],
@@ -315,6 +318,7 @@ export const socialMediaDrafting: Tutorial = {
   subtitle:
     "Generate first-draft posts that sound like Brookhaven, not like generic LinkedIn content.",
   emoji: "📱",
+  format: "Project",
   difficulty: "Beginner",
   timeEstimate: "15 min setup, 2 min per post after",
   audienceRoleIds: ["paralegal", "strategy-lead"],
@@ -427,6 +431,7 @@ export const checklistAutoUpdate: Tutorial = {
   subtitle:
     "Stop manually checking boxes when a client emails 'attached is the W-9.' Let Claude update the checklist.",
   emoji: "☑️",
+  format: "Script",
   difficulty: "Intermediate",
   timeEstimate: "2-3 hours setup, saves 30+ min/day after",
   audienceRoleIds: ["client-resource-specialist", "tax-lead"],

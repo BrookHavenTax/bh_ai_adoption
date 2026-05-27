@@ -5,6 +5,7 @@ export const teamsActionItems: Tutorial = {
   title: "Teams transcript → structured action items",
   subtitle: "Every meeting ends with 'who's doing what by when' — without anyone taking notes.",
   emoji: "🎥",
+  format: "Project",
   difficulty: "Beginner",
   timeEstimate: "10 min setup, 2 min per meeting after",
   audienceRoleIds: [
@@ -107,6 +108,7 @@ export const telegramBotBh: Tutorial = {
   subtitle:
     "A bot the team can DM with questions — answers from Monday + Dropbox + QBO via Claude.",
   emoji: "🤖",
+  format: "Script",
   difficulty: "Advanced",
   timeEstimate: "3-4 hours initial build, hours of saved searching after",
   audienceRoleIds: [
@@ -283,6 +285,7 @@ export const smartComplianceReminders: Tutorial = {
   subtitle:
     "Stop hearing 'X is due in 5 days' for things that are already in motion. Get reminders with context.",
   emoji: "⏰",
+  format: "Script",
   difficulty: "Intermediate",
   timeEstimate: "2 hours setup, ongoing maintenance ~30 min/month",
   audienceRoleIds: [

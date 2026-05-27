@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock } from "lucide-react";
 import type { Role, Theme, ToolPlaybook, Tutorial } from "@/content/types";
-import { Badge, DifficultyBadge, EffortBadge } from "./Badge";
+import { Badge, DifficultyBadge, EffortBadge, FormatBadge } from "./Badge";
 
 // Shared card styling. Subtle hover lift + border accent.
 const CARD_BASE =
@@ -98,6 +98,9 @@ export function TutorialCard({ tutorial }: { tutorial: Tutorial }) {
           {tutorial.emoji}
         </div>
         <div className="flex-1 min-w-0">
+          <div className="mb-1.5">
+            <FormatBadge format={tutorial.format} />
+          </div>
           <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50 group-hover:text-brand-700 dark:group-hover:text-brand-300 transition-colors leading-tight">
             {tutorial.title}
           </h3>

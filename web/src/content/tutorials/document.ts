@@ -5,6 +5,7 @@ export const estateDocReview: Tutorial = {
   title: "Estate doc review with Claude",
   subtitle: "60-page trust documents read and summarized in 2 minutes.",
   emoji: "⚖️",
+  format: "Project",
   difficulty: "Intermediate",
   timeEstimate: "15 min to set up, 2 min per doc after",
   audienceRoleIds: ["legal-ops-director", "paralegal", "tax-lead"],
@@ -130,6 +131,7 @@ export const contractRedline: Tutorial = {
   title: "Contract redline against our standard",
   subtitle: "Get a plain-English diff between an incoming contract and our template — in 2 minutes.",
   emoji: "📑",
+  format: "Project",
   difficulty: "Intermediate",
   timeEstimate: "20 min setup, 2-5 min per contract after",
   audienceRoleIds: ["legal-ops-director", "paralegal"],
@@ -212,6 +214,7 @@ export const taxSourceDocChecklist: Tutorial = {
   subtitle:
     "Read a stack of client source docs, produce a 'what's in, what's missing' checklist.",
   emoji: "✅",
+  format: "Project",
   difficulty: "Intermediate",
   timeEstimate: "30 min setup, 5-10 min per client return after",
   audienceRoleIds: ["tax-lead", "client-resource-specialist"],
@@ -323,6 +326,7 @@ export const cumulativeClientNote: Tutorial = {
   subtitle:
     "A rolling summary of every interaction, doc, and decision per client per year — auto-updated.",
   emoji: "📔",
+  format: "Project",
   difficulty: "Intermediate",
   timeEstimate: "1 hour setup, ongoing maintenance is automatic",
   audienceRoleIds: ["tax-lead", "client-resource-specialist", "accounting-lead"],

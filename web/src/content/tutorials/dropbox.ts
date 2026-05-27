@@ -6,6 +6,7 @@ export const dropboxNamingConvention: Tutorial = {
   subtitle:
     "Process before AI. Lock the rule, then AI helps everyone follow it.",
   emoji: "🗂️",
+  format: "Process",
   difficulty: "Beginner",
   timeEstimate: "20 min to agree on the rule, ongoing discipline",
   audienceRoleIds: [
@@ -130,6 +131,7 @@ export const dropboxAutoRename: Tutorial = {
   title: "Auto-rename scanned PDFs with Claude",
   subtitle: "Drop an unnamed scan in, get a properly named, properly filed PDF out.",
   emoji: "🏷️",
+  format: "Script",
   difficulty: "Intermediate",
   timeEstimate: "30 min to set up, seconds per file after",
   audienceRoleIds: [
@@ -296,6 +298,7 @@ export const dropboxDedup: Tutorial = {
   title: "Find duplicate documents in Dropbox",
   subtitle: "Stop reviewing the same scan twice. Let Claude tell you which copies to keep.",
   emoji: "👯",
+  format: "Prompt",
   difficulty: "Beginner",
   timeEstimate: "15 min per client folder",
   audienceRoleIds: ["client-resource-specialist", "admin-manager"],
@@ -367,6 +370,7 @@ export const dropboxSemanticSearch: Tutorial = {
   subtitle:
     "'Find the Pinnacle wire-setup conversation from last spring' — and actually get it.",
   emoji: "🔎",
+  format: "Script",
   difficulty: "Advanced",
   timeEstimate: "2-3 hours initial setup, instant queries after",
   audienceRoleIds: [

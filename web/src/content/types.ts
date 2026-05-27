@@ -5,6 +5,23 @@ export type Difficulty = "Beginner" | "Intermediate" | "Advanced";
 export type CalloutVariant = "tip" | "warning" | "info" | "success";
 export type EffortBadge = "Low" | "Medium" | "High" | "Mixed";
 
+/**
+ * What kind of artifact this tutorial produces / teaches:
+ * - Skill   — a reusable Claude Skill (claude.ai → Settings → Skills)
+ * - Cowork  — uses a Claude connector to a 3rd-party system (QBO, Outlook, etc.)
+ * - Project — a Claude.ai Project with knowledge + custom instructions
+ * - Prompt  — a one-shot Claude.ai prompt pattern (no setup)
+ * - Script  — Python/JS code that calls Claude (or other APIs)
+ * - Process — discipline / convention with light AI assist
+ */
+export type TutorialFormat =
+  | "Skill"
+  | "Cowork"
+  | "Project"
+  | "Prompt"
+  | "Script"
+  | "Process";
+
 export interface Role {
   id: string;
   title: string;
@@ -50,6 +67,7 @@ export interface Tutorial {
   title: string;
   subtitle: string;
   emoji: string;
+  format: TutorialFormat;
   difficulty: Difficulty;
   timeEstimate: string;
   audienceRoleIds: string[];

@@ -6,6 +6,7 @@ import {
   Wrench,
   BookOpen,
   Zap,
+  GraduationCap,
 } from "lucide-react";
 import { themes, roles, tools, tutorials } from "@/content";
 import { ThemeCard, TutorialCard } from "@/components/cards";
@@ -19,8 +20,19 @@ const FEATURED_SLUGS = [
   "estate-doc-review",
 ];
 
+// Skills & Cowork featured set — foundational first, then 2 examples
+const SKILLS_COWORK_SLUGS = [
+  "claude-skills-101",
+  "claude-cowork-101",
+  "skill-daily-briefing",
+  "cowork-monday-standup",
+];
+
 export function Home() {
   const featured = FEATURED_SLUGS.map(
+    (s) => tutorials.find((t) => t.slug === s)!,
+  ).filter(Boolean);
+  const skillsCowork = SKILLS_COWORK_SLUGS.map(
     (s) => tutorials.find((t) => t.slug === s)!,
   ).filter(Boolean);
 
@@ -136,6 +148,46 @@ export function Home() {
           <RecentlyViewed limit={5} />
         </aside>
       </div>
+
+      {/* Skills & Cowork featured */}
+      <section className="mb-16">
+        <div className="relative overflow-hidden bg-gradient-to-br from-violet-50 via-white to-amber-50 dark:from-violet-950/30 dark:via-slate-900 dark:to-brand-950/30 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 lg:p-8">
+          <div className="flex items-start justify-between mb-6 flex-wrap gap-3">
+            <div>
+              <div className="flex items-center gap-2 text-violet-700 dark:text-violet-300 text-xs font-semibold uppercase tracking-wider mb-1.5">
+                <GraduationCap size={12} aria-hidden="true" />
+                Learn the platform
+              </div>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-50">
+                Claude Skills & Cowork
+              </h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1.5 max-w-2xl">
+                Start with the two foundational tutorials below, then build
+                small high-value Skills and connector workflows for your
+                day-to-day work.
+              </p>
+            </div>
+            <Link
+              to="/tutorials?filter=skills-cowork"
+              className="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-violet-700 dark:text-violet-300 hover:text-violet-800 dark:hover:text-violet-200 transition-colors"
+            >
+              All Skills & Cowork tutorials
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {skillsCowork.map((t, i) => (
+              <div
+                key={t.slug}
+                className="animate-slide-up"
+                style={{ animationDelay: `${i * 60}ms` }}
+              >
+                <TutorialCard tutorial={t} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Themes section */}
       <section className="mb-16">

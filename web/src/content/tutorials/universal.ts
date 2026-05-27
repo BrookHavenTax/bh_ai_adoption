@@ -6,6 +6,7 @@ export const emailFirstDraft: Tutorial = {
   subtitle:
     "Turn one routine email you send every day into a 30-second draft-and-edit habit.",
   emoji: "✉️",
+  format: "Project",
   difficulty: "Beginner",
   timeEstimate: "10 minutes to set up, saves ~30 min/day after",
   audienceRoleIds: [
@@ -157,6 +158,7 @@ export const pdfSummary30sec: Tutorial = {
   subtitle:
     "Stop reading 60-page docs end-to-end when you only need the key terms.",
   emoji: "📄",
+  format: "Prompt",
   difficulty: "Beginner",
   timeEstimate: "5 minutes to learn, 30 seconds per PDF after",
   audienceRoleIds: [
@@ -266,6 +268,7 @@ export const claudeSkillBhVoice: Tutorial = {
   subtitle:
     "A reusable skill that captures our tone, signatures, and standard phrasings — so every BH-er sounds like a BH-er.",
   emoji: "🎤",
+  format: "Skill",
   difficulty: "Intermediate",
   timeEstimate: "30 minutes to build, lifetime use",
   audienceRoleIds: [

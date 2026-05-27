@@ -22,9 +22,9 @@ import {
   themes,
   tools,
 } from "@/content";
-import type { Difficulty } from "@/content/types";
+import type { Difficulty, TutorialFormat } from "@/content/types";
 import { TutorialCard } from "@/components/cards";
-import { Badge, DifficultyBadge } from "@/components/Badge";
+import { Badge, DifficultyBadge, FormatBadge } from "@/components/Badge";
 import { Callout } from "@/components/Callout";
 import { StepList, stepAnchorId } from "@/components/StepList";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -42,9 +42,19 @@ const difficulties: DifficultyFilter[] = [
   "Advanced",
 ];
 
+const allFormats: TutorialFormat[] = [
+  "Skill",
+  "Cowork",
+  "Project",
+  "Prompt",
+  "Script",
+  "Process",
+];
+
 export function TutorialsIndex() {
   const [difficulty, setDifficulty] = useState<DifficultyFilter>("All");
   const [search, setSearch] = useState("");
+  const [selectedFormats, setSelectedFormats] = useState<TutorialFormat[]>([]);
   const [selectedThemes, setSelectedThemes] = useState<string[]>([]);
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
   const [selectedTools, setSelectedTools] = useState<string[]>([]);
@@ -62,6 +72,9 @@ export function TutorialsIndex() {
           t.subtitle.toLowerCase().includes(q),
       );
     }
+    if (selectedFormats.length > 0) {
+      list = list.filter((t) => selectedFormats.includes(t.format));
+    }
     if (selectedThemes.length > 0) {
       list = list.filter((t) =>
         t.themeIds.some((id) => selectedThemes.includes(id)),
@@ -78,11 +91,12 @@ export function TutorialsIndex() {
       );
     }
     return list;
-  }, [difficulty, search, selectedThemes, selectedRoles, selectedTools]);
+  }, [difficulty, search, selectedFormats, selectedThemes, selectedRoles, selectedTools]);
 
   const filterCount =
     (difficulty !== "All" ? 1 : 0) +
     (search.trim() ? 1 : 0) +
+    selectedFormats.length +
     selectedThemes.length +
     selectedRoles.length +
     selectedTools.length;
@@ -90,6 +104,7 @@ export function TutorialsIndex() {
   function clearAll() {
     setDifficulty("All");
     setSearch("");
+    setSelectedFormats([]);
     setSelectedThemes([]);
     setSelectedRoles([]);
     setSelectedTools([]);
@@ -142,6 +157,15 @@ export function TutorialsIndex() {
         </div>
 
         {/* Chip filter groups */}
+        <FilterChipGroup
+          label="Format"
+          items={allFormats.map((f) => ({ id: f, label: f }))}
+          selected={selectedFormats}
+          onToggle={(id) =>
+            toggle(selectedFormats, id as TutorialFormat, setSelectedFormats)
+          }
+          testid="filter-formats"
+        />
         <FilterChipGroup
           label="Themes"
           items={themes.map((t) => ({ id: t.id, label: `${t.emoji} ${t.title}` }))}
@@ -360,6 +384,7 @@ export function TutorialDetail() {
             </div>
           </div>
           <div className="flex flex-wrap gap-2 items-center text-sm">
+            <FormatBadge format={tutorial.format} />
             <DifficultyBadge level={tutorial.difficulty} />
             <span className="inline-flex items-center gap-1 text-slate-600 dark:text-slate-400">
               <Clock size={14} aria-hidden="true" />

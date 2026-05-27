@@ -6,9 +6,11 @@ import { qboTutorials } from "./qbo";
 import { documentTutorials } from "./document";
 import { commsTutorials } from "./comms";
 import { roleSpecificTutorials } from "./role-specific";
+import { skillsAndCoworkTutorials } from "./skills-cowork";
 
 export const tutorials: Tutorial[] = [
   ...universalTutorials,
+  ...skillsAndCoworkTutorials,
   ...dropboxTutorials,
   ...mondayTutorials,
   ...qboTutorials,
