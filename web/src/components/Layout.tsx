@@ -4,12 +4,14 @@ import { Menu, X, Search } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
-  { to: "/", label: "Home", end: true },
-  { to: "/themes", label: "Themes" },
-  { to: "/roles", label: "Roles" },
-  { to: "/tools", label: "Tools" },
-  { to: "/tutorials", label: "Tutorials" },
-  { to: "/about", label: "About" },
+  { to: "/", label: "Home", end: true, highlight: false },
+  { to: "/skills", label: "Skills", end: false, highlight: true },
+  { to: "/cowork", label: "Cowork", end: false, highlight: true },
+  { to: "/tutorials", label: "All tutorials", end: false, highlight: false },
+  { to: "/roles", label: "Roles", end: false, highlight: false },
+  { to: "/themes", label: "Themes", end: false, highlight: false },
+  { to: "/tools", label: "Tools", end: false, highlight: false },
+  { to: "/about", label: "About", end: false, highlight: false },
 ];
 
 interface LayoutProps {
@@ -61,10 +63,14 @@ export function Layout({ onOpenPalette }: LayoutProps) {
                   to={item.to}
                   end={item.end}
                   className={({ isActive }) =>
-                    `relative px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
+                    `relative px-2.5 py-1.5 text-sm font-medium rounded-md transition-colors ${
                       isActive
-                        ? "text-slate-900 dark:text-slate-50"
-                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800/60"
+                        ? item.highlight
+                          ? "text-violet-700 dark:text-violet-300"
+                          : "text-slate-900 dark:text-slate-50"
+                        : item.highlight
+                          ? "text-violet-700 dark:text-violet-400 hover:text-violet-900 dark:hover:text-violet-200 hover:bg-violet-50 dark:hover:bg-violet-950/40"
+                          : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800/60"
                     }`
                   }
                   data-testid={`nav-${item.to.replace("/", "") || "home"}`}
@@ -74,7 +80,7 @@ export function Layout({ onOpenPalette }: LayoutProps) {
                       {item.label}
                       {isActive && (
                         <span
-                          className="absolute left-1/2 -translate-x-1/2 bottom-0 w-6 h-0.5 bg-brand-500 rounded-full"
+                          className={`absolute left-1/2 -translate-x-1/2 bottom-0 w-6 h-0.5 rounded-full ${item.highlight ? "bg-violet-500" : "bg-brand-500"}`}
                           aria-hidden="true"
                         />
                       )}
@@ -135,8 +141,12 @@ export function Layout({ onOpenPalette }: LayoutProps) {
                   className={({ isActive }) =>
                     `block px-3 py-2 text-sm font-medium rounded-md ${
                       isActive
-                        ? "bg-brand-100 dark:bg-brand-900/30 text-brand-800 dark:text-brand-200"
-                        : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        ? item.highlight
+                          ? "bg-violet-100 dark:bg-violet-900/30 text-violet-800 dark:text-violet-200"
+                          : "bg-brand-100 dark:bg-brand-900/30 text-brand-800 dark:text-brand-200"
+                        : item.highlight
+                          ? "text-violet-700 dark:text-violet-300 hover:bg-violet-50 dark:hover:bg-violet-950/30"
+                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                     }`
                   }
                 >

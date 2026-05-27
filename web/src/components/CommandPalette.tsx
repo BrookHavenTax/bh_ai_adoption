@@ -17,6 +17,8 @@ import {
   Home,
   Clock,
   X,
+  GraduationCap,
+  Plug,
 } from "lucide-react";
 import {
   roles,
@@ -49,6 +51,24 @@ function buildIndex(): Command[] {
     to: "/",
     group: "Pages",
     keywords: "home start landing",
+  });
+  cmds.push({
+    id: "skills",
+    title: "Claude Skills",
+    subtitle: "Learn what Skills are and build your own",
+    icon: GraduationCap,
+    to: "/skills",
+    group: "Pages",
+    keywords: "skills claude skill custom instructions trigger",
+  });
+  cmds.push({
+    id: "cowork",
+    title: "Claude Cowork",
+    subtitle: "Connect Claude to your work tools",
+    icon: Plug,
+    to: "/cowork",
+    group: "Pages",
+    keywords: "cowork connector connectors mcp outlook qbo monday dropbox integration",
   });
   cmds.push({
     id: "themes",

@@ -69,11 +69,59 @@ describe("Routing — top-level pages render", () => {
     ).toBeInTheDocument();
   });
 
+  it("skills index renders and shows the foundational tutorial card", () => {
+    renderWithRouter(<App />, { initialEntries: ["/skills"] });
+    expect(
+      screen.getByRole("heading", { name: /Bundle your playbooks/i, level: 1 }),
+    ).toBeInTheDocument();
+    // The 101 tutorial appears as a heading on the page
+    expect(
+      screen.getByRole("heading", {
+        name: /Claude Skills 101/i,
+        level: 2,
+      }),
+    ).toBeInTheDocument();
+  });
+
+  it("cowork index renders and shows the foundational tutorial card", () => {
+    renderWithRouter(<App />, { initialEntries: ["/cowork"] });
+    expect(
+      screen.getByRole("heading", {
+        name: /Connect Claude to the systems/i,
+        level: 1,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        name: /Claude Cowork 101/i,
+        level: 2,
+      }),
+    ).toBeInTheDocument();
+  });
+
   it("404 page renders for unknown route", () => {
     renderWithRouter(<App />, { initialEntries: ["/totally-not-a-page"] });
     expect(
       screen.getByRole("heading", { name: /Page not found/i, level: 1 }),
     ).toBeInTheDocument();
+  });
+
+  it("home page shows the featured tutorial spotlight", () => {
+    renderWithRouter(<App />, { initialEntries: ["/"] });
+    expect(screen.getByTestId("featured-tutorial")).toBeInTheDocument();
+    // Featured is the email-first-draft tutorial
+    expect(
+      screen.getByRole("heading", {
+        name: /Your first-draft email assistant/i,
+        level: 2,
+      }),
+    ).toBeInTheDocument();
+  });
+
+  it("nav includes Skills and Cowork as primary links", () => {
+    renderWithRouter(<App />, { initialEntries: ["/"] });
+    expect(screen.getByTestId("nav-skills")).toBeInTheDocument();
+    expect(screen.getByTestId("nav-cowork")).toBeInTheDocument();
   });
 });
 

@@ -84,7 +84,7 @@ const formatToVariant: Record<TutorialFormat, BadgeVariant> = {
 
 const formatLabels: Record<TutorialFormat, string> = {
   Skill: "Claude Skill",
-  Cowork: "Cowork",
+  Cowork: "Claude Cowork",
   Project: "Project",
   Prompt: "Prompt",
   Script: "Script",
