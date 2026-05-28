@@ -5,11 +5,11 @@ A monthly digest of tax legislation moves + AI tooling updates relevant to Brook
 ## Architecture
 
 ```
-sources.yml                                  ← what to read
+sources.yml                                  ← trusted sources + priority topics
     │
     ▼
-scripts/generate-newsletter.ts               ← fetch + draft via Claude API
-    │
+scripts/generate-newsletter.ts               ← Claude researches the web (API
+    │                                            web_search tool) + drafts the issue
     ▼
 web/src/content/newsletter/YYYY-MM.ts        ← typed issue file
 web/src/content/newsletter/index.ts          ← updated to import it
@@ -21,6 +21,13 @@ git commit + push                            ← triggered manually OR by GitHub
 Netlify auto-build + deploy                  ← live on the site
 ```
 
+**How the research works:** the generator uses the Anthropic Messages API
+`web_search` tool — Claude searches the web live during generation, the same
+way a person would, guided by the trusted-source list and priority topics in
+`sources.yml`. It is NOT a fixed scraper; the source list is a starting point,
+not a hard limit. Claude verifies the status of anything before reporting it
+(e.g. won't say a bill "passed" unless a source confirms it).
+
 ## Setup (one-time)
 
 ### 1. Add ANTHROPIC_API_KEY to GitHub Actions secrets
@@ -30,7 +37,7 @@ In the repo on GitHub: **Settings → Secrets and variables → Actions → New 
 - Name: `ANTHROPIC_API_KEY`
 - Value: your Anthropic API key (starts with `sk-ant-...`)
 
-That's all the workflow needs. Cost per monthly run is roughly **$2–4** (Claude reads ~70K characters of source content and writes ~3K of output).
+That's all the workflow needs. Cost per monthly run is roughly **$3–6** (Claude does ~8-12 web searches plus token usage for reading results and writing the issue). Web search is billed per search (~$10 per 1,000 searches) on top of token costs — negligible at one run a month.
 
 ### 2. (Optional) Customize sources
 
@@ -93,8 +100,9 @@ These are hints, not hard rules. Adjust as priorities shift.
 
 Common causes:
 - **`ANTHROPIC_API_KEY` not set** — set the secret, re-run from the Actions tab
-- **Source fetch failure** — some sites block bots. Failed sources are logged; the generator still produces an issue from the ones that worked.
-- **Claude output isn't valid JSON** — rare, but the script logs the raw response. Re-run; if it persists, tweak the system prompt in `generate-newsletter.ts`.
+- **Web search returned little** — quiet news month; the generator will honestly say a section is quiet rather than pad it
+- **Claude output isn't valid JSON** — rare; the script extracts the outermost `{...}` and logs the raw text if it can't parse. Re-run; if it persists, tweak the system prompt in `generate-newsletter.ts`.
+- **`web_search` tool rejected** — your Anthropic account/plan must have web search enabled. If the API returns a tool error, check the account's tool access.
 
 ## Adding a new section
 
