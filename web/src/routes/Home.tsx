@@ -11,9 +11,12 @@ import {
   Star,
   Clock,
   MessageSquareText,
+  Newspaper,
+  Landmark,
 } from "lucide-react";
 import { themes, roles, tools, tutorials, tutorialsBySlug } from "@/content";
 import { promptTemplates, modelGuides } from "@/content/prompts";
+import { issues } from "@/content/newsletter";
 import { rolesById } from "@/content/roles";
 import { ThemeCard, TutorialCard } from "@/components/cards";
 import { FormatBadge, DifficultyBadge, Badge } from "@/components/Badge";
@@ -58,6 +61,7 @@ export function Home() {
   const featuredPrompts = FEATURED_PROMPT_IDS.map((id) =>
     promptTemplates.find((p) => p.id === id),
   ).filter(Boolean) as typeof promptTemplates;
+  const latestIssue = issues[0];
 
   return (
     <div>
@@ -438,6 +442,83 @@ export function Home() {
                 );
               })}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEWSLETTER SECTION */}
+      <section className="mb-16">
+        <div className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-teal-50 dark:from-emerald-950/30 dark:via-slate-900 dark:to-teal-950/30 border border-emerald-200 dark:border-emerald-900 rounded-2xl p-6 lg:p-8">
+          <div
+            className="absolute -top-16 -left-16 w-64 h-64 bg-emerald-300/30 dark:bg-emerald-600/15 rounded-full blur-3xl"
+            aria-hidden="true"
+          />
+          <div className="relative">
+            <div className="flex items-start justify-between mb-5 flex-wrap gap-3">
+              <div>
+                <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+                  <Newspaper size={14} aria-hidden="true" />
+                  BrookHaven Monthly
+                </div>
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-2">
+                  Tax + AI updates, every month
+                </h2>
+                <p className="text-base text-slate-700 dark:text-slate-300 max-w-2xl leading-relaxed">
+                  Tax legislation that affects our clients' filings — plus AI
+                  tooling news — in digestible monthly bites. Auto-published on
+                  the 1st of every month.
+                </p>
+              </div>
+              <Link
+                to="/newsletter"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-emerald-100 bg-white dark:bg-slate-900 border border-emerald-200 dark:border-emerald-800 rounded-lg hover:border-emerald-400 dark:hover:border-emerald-600 transition-all"
+              >
+                Browse all issues
+                <ArrowRight size={14} aria-hidden="true" />
+              </Link>
+            </div>
+
+            {latestIssue && (
+              <Link
+                to={`/newsletter/${latestIssue.month}`}
+                className="group block p-5 lg:p-6 bg-white dark:bg-slate-900 border-2 border-emerald-300 dark:border-emerald-700 rounded-xl hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-lg transition-all"
+                data-testid="home-newsletter-latest"
+              >
+                <div className="flex items-center gap-2 mb-2 flex-wrap">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-900 dark:text-emerald-200 text-[10px] font-bold uppercase tracking-wider rounded">
+                    <Star size={10} aria-hidden="true" />
+                    Latest issue
+                  </span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                    {latestIssue.monthLabel} ·{" "}
+                    {latestIssue.taxLegislation.length} tax items ·{" "}
+                    {latestIssue.aiTools.length} AI items
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-50 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors mb-3">
+                  BrookHaven Monthly — {latestIssue.monthLabel}
+                </h3>
+                <ul className="space-y-2">
+                  {latestIssue.taxLegislation.slice(0, 3).map((it, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300"
+                    >
+                      <Landmark
+                        size={14}
+                        className="text-emerald-600 dark:text-emerald-400 mt-0.5 flex-shrink-0"
+                        aria-hidden="true"
+                      />
+                      {it.title}
+                    </li>
+                  ))}
+                </ul>
+                <span className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-emerald-700 dark:text-emerald-400 group-hover:gap-2.5 transition-all">
+                  Read the {latestIssue.monthLabel} issue
+                  <ArrowRight size={14} aria-hidden="true" />
+                </span>
+              </Link>
+            )}
           </div>
         </div>
       </section>
