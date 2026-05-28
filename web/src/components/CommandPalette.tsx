@@ -20,6 +20,7 @@ import {
   GraduationCap,
   Plug,
   FileText,
+  MessageSquareText,
 } from "lucide-react";
 import {
   roles,
@@ -70,6 +71,15 @@ function buildIndex(): Command[] {
     to: "/cowork",
     group: "Pages",
     keywords: "cowork connector connectors mcp outlook qbo monday dropbox integration",
+  });
+  cmds.push({
+    id: "prompts",
+    title: "Claude Prompts",
+    subtitle: "Copy-paste prompt templates + which model to use",
+    icon: MessageSquareText,
+    to: "/prompts",
+    group: "Pages",
+    keywords: "prompts prompt templates model opus sonnet haiku ask claude examples",
   });
   cmds.push({
     id: "newsletter",

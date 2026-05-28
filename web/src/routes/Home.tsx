@@ -10,10 +10,13 @@ import {
   Plug,
   Star,
   Clock,
+  MessageSquareText,
 } from "lucide-react";
 import { themes, roles, tools, tutorials, tutorialsBySlug } from "@/content";
+import { promptTemplates, modelGuides } from "@/content/prompts";
+import { rolesById } from "@/content/roles";
 import { ThemeCard, TutorialCard } from "@/components/cards";
-import { FormatBadge, DifficultyBadge } from "@/components/Badge";
+import { FormatBadge, DifficultyBadge, Badge } from "@/components/Badge";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
 
 // THE ONE tutorial worth surfacing first
@@ -35,6 +38,13 @@ const COWORK_LIST_SLUGS = [
   "qbo-month-close",
 ];
 
+// Featured prompt templates for the home teaser
+const FEATURED_PROMPT_IDS = [
+  "tax-first-draft-email",
+  "acct-bill-anomaly",
+  "legal-estate-keyterms",
+];
+
 export function Home() {
   const featured = tutorialsBySlug[FEATURED_SLUG];
   const skills101 = tutorialsBySlug["claude-skills-101"];
@@ -45,6 +55,9 @@ export function Home() {
   const coworkList = COWORK_LIST_SLUGS.map((s) => tutorialsBySlug[s]).filter(
     Boolean,
   );
+  const featuredPrompts = FEATURED_PROMPT_IDS.map((id) =>
+    promptTemplates.find((p) => p.id === id),
+  ).filter(Boolean) as typeof promptTemplates;
 
   return (
     <div>
@@ -332,6 +345,98 @@ export function Home() {
                   <TutorialCard tutorial={t} />
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CLAUDE PROMPTS SECTION */}
+      <section className="mb-16">
+        <div className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-white to-cyan-50 dark:from-sky-950/30 dark:via-slate-900 dark:to-cyan-950/30 border border-sky-200 dark:border-sky-900 rounded-2xl p-6 lg:p-8">
+          <div
+            className="absolute -top-16 -right-16 w-64 h-64 bg-sky-300/30 dark:bg-sky-600/15 rounded-full blur-3xl"
+            aria-hidden="true"
+          />
+          <div className="relative">
+            <div className="flex items-start justify-between mb-5 flex-wrap gap-3">
+              <div>
+                <div className="flex items-center gap-2 text-sky-700 dark:text-sky-400 text-xs font-bold uppercase tracking-wider mb-2">
+                  <MessageSquareText size={14} aria-hidden="true" />
+                  Claude Prompts
+                </div>
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-2">
+                  Ask Claude better
+                </h2>
+                <p className="text-base text-slate-700 dark:text-slate-300 max-w-2xl leading-relaxed">
+                  {promptTemplates.length} copy-paste prompt templates mapped to
+                  your role — plus a guide to which model (Opus, Sonnet, Haiku)
+                  to use for what.
+                </p>
+              </div>
+              <Link
+                to="/prompts"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100 bg-white dark:bg-slate-900 border border-sky-200 dark:border-sky-800 rounded-lg hover:border-sky-400 dark:hover:border-sky-600 transition-all"
+              >
+                Open the prompt library
+                <ArrowRight size={14} aria-hidden="true" />
+              </Link>
+            </div>
+
+            {/* Model chips */}
+            <div className="flex flex-wrap gap-2 mb-5">
+              {modelGuides.map((g) => (
+                <span
+                  key={g.model}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
+                >
+                  <span className="font-semibold text-slate-900 dark:text-slate-100">
+                    Claude {g.model}
+                  </span>
+                  <span className="text-slate-500 dark:text-slate-400">
+                    {g.model === "Opus"
+                      ? "hard, high-stakes work"
+                      : g.model === "Sonnet"
+                        ? "the daily driver"
+                        : "fast & simple"}
+                  </span>
+                </span>
+              ))}
+            </div>
+
+            {/* Featured prompt teasers */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {featuredPrompts.map((p) => {
+                const role = rolesById[p.forRoleIds[0]];
+                return (
+                  <Link
+                    key={p.id}
+                    to="/prompts"
+                    className="group block p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-sky-400 dark:hover:border-sky-500 hover:shadow-md transition-all"
+                  >
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <Badge
+                        variant={
+                          p.model === "Opus"
+                            ? "purple"
+                            : p.model === "Sonnet"
+                              ? "blue"
+                              : "green"
+                        }
+                      >
+                        Claude {p.model}
+                      </Badge>
+                    </div>
+                    <div className="font-semibold text-sm text-slate-900 dark:text-slate-50 group-hover:text-sky-700 dark:group-hover:text-sky-300 transition-colors leading-tight">
+                      {p.title}
+                    </div>
+                    {role && (
+                      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                        for {role.title}
+                      </div>
+                    )}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>

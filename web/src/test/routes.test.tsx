@@ -99,6 +99,45 @@ describe("Routing — top-level pages render", () => {
     ).toBeInTheDocument();
   });
 
+  it("prompts index renders hero, model guide, and templates", () => {
+    renderWithRouter(<App />, { initialEntries: ["/prompts"] });
+    expect(
+      screen.getByRole("heading", {
+        name: /Ask Claude better\. Steal these prompts\./i,
+        level: 1,
+      }),
+    ).toBeInTheDocument();
+    // Model guide present
+    expect(
+      screen.getByRole("heading", {
+        name: /Which Claude model should I use/i,
+        level: 2,
+      }),
+    ).toBeInTheDocument();
+    // Role filter + at least one prompt card (a template can appear under
+    // multiple role groups, so use getAll)
+    expect(screen.getByTestId("prompt-role-filter")).toBeInTheDocument();
+    expect(
+      screen.getAllByTestId("prompt-card-tax-first-draft-email").length,
+    ).toBeGreaterThan(0);
+  });
+
+  it("prompts role filter narrows to a single role's templates", async () => {
+    const user = userEvent.setup();
+    const { container } = renderWithRouter(<App />, {
+      initialEntries: ["/prompts"],
+    });
+    const before = container.querySelectorAll(
+      '[data-testid^="prompt-card-"]',
+    ).length;
+    await user.click(screen.getByTestId("prompt-role-chip-tax-lead"));
+    const after = container.querySelectorAll(
+      '[data-testid^="prompt-card-"]',
+    ).length;
+    expect(after).toBeLessThan(before);
+    expect(after).toBeGreaterThan(0);
+  });
+
   it("404 page renders for unknown route", () => {
     renderWithRouter(<App />, { initialEntries: ["/totally-not-a-page"] });
     expect(
