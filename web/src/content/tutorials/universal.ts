@@ -49,7 +49,7 @@ Pull up the last 3 examples you sent of that email type. We'll teach Claude what
       title: "Open Claude.ai and start a new Project",
       body: `Go to **claude.ai** → click **Projects** in the left sidebar → **+ New Project**.
 
-Name it something like: *"BH email — AR follow-ups"* (or whatever you picked in step 1).
+Name it something like: *"BrookHaven email — AR follow-ups"* (or whatever you picked in step 1).
 
 A Project is a saved workspace where Claude remembers your custom instructions and uploaded files across chats. This is where your "voice" will live.`,
     },
@@ -68,7 +68,7 @@ You can also attach them as a .docx or .txt file if you prefer.`,
     {
       title: "Write the Project's custom instructions",
       body: `Click **Set custom instructions** (or **Edit instructions**) in your Project settings. Paste this template — adjust the names and details to your situation:`,
-      prompt: `You are my email drafting assistant for Brookhaven. You help me write routine AR follow-up emails to tax/accounting clients.
+      prompt: `You are my email drafting assistant for BrookHaven. You help me write routine AR follow-up emails to tax/accounting clients.
 
 VOICE:
 - Friendly but professional. Warm tone. No corporate-speak.
@@ -143,7 +143,7 @@ Most coworkers end up with 3–6 Projects (AR follow-up, client doc nudge, statu
     "Trying to automate ALL your email at once. Pick one type, prove it, expand.",
     "Skipping the custom instructions step — without them, Claude writes generic emails that don't sound like you.",
     "Trusting first drafts blindly. Always read before sending. Always.",
-    "Pasting sensitive client financial details into Claude without checking with your data policy first. (For most BH workflows this is fine on Claude.ai — but ask if you're unsure.)",
+    "Pasting sensitive client financial details into Claude without checking with your data policy first. (For most BrookHaven workflows this is fine on Claude.ai — but ask if you're unsure.)",
   ],
   relatedTutorialSlugs: [
     "claude-skill-bh-voice",
@@ -223,7 +223,7 @@ Output as a table. If anything is ambiguous, flag it with "REVIEW:" at the start
     {
       title: "For contracts, ask for a redline-style comparison",
       body: `If you're reviewing a new contract against a standard template, paste both PDFs (or one PDF + a description of your standard) and ask:`,
-      prompt: `Compare the attached contract against the BH standard MSA. Produce a table:
+      prompt: `Compare the attached contract against the BrookHaven standard MSA. Produce a table:
 
 | Section | What this contract says | What our standard says | Why it matters |
 
@@ -264,9 +264,9 @@ Workflow: read Claude's summary → open the PDF at the flagged sections → rea
 
 export const claudeSkillBhVoice: Tutorial = {
   slug: "claude-skill-bh-voice",
-  title: "Build the 'Brookhaven voice' Claude Skill",
+  title: "Build the 'BrookHaven voice' Claude Skill",
   subtitle:
-    "A reusable skill that captures our tone, signatures, and standard phrasings — so every BH-er sounds like a BH-er.",
+    "A reusable skill that captures our tone, signatures, and standard phrasings — so every BrookHaven-er sounds like a BrookHaven-er.",
   emoji: "🎤",
   format: "Skill",
   difficulty: "Intermediate",
@@ -283,11 +283,11 @@ export const claudeSkillBhVoice: Tutorial = {
   aiTools: ["Claude.ai (Skills feature)", "Claude Cowork"],
   prerequisites: [
     "A Claude.ai account (Skills is available on Pro / Team / Enterprise plans)",
-    "10 example BH emails or messages that show 'our voice' — collected from current staff",
-    "Agreement from leadership on what 'BH voice' actually is (5 minutes; usually obvious)",
+    "10 example BrookHaven emails or messages that show 'our voice' — collected from current staff",
+    "Agreement from leadership on what 'BrookHaven voice' actually is (5 minutes; usually obvious)",
   ],
   whenToUse:
-    "When you want everyone at BH to produce consistent-sounding written communication — client emails, status updates, internal handoffs, social posts. Build it once, everyone uses it.",
+    "When you want everyone at BrookHaven to produce consistent-sounding written communication — client emails, status updates, internal handoffs, social posts. Build it once, everyone uses it.",
   whenNotToUse:
     "For deeply personal communication (a sensitive HR conversation, a personal note of condolence). Voice consistency is good for routine work, not for moments that should feel human and individual.",
   steps: [
@@ -295,7 +295,7 @@ export const claudeSkillBhVoice: Tutorial = {
       title: "What a Claude Skill actually is",
       body: `A **Skill** is a small, named bundle of instructions + reference material that Claude can pick up when relevant — like a stored playbook. Unlike Project knowledge, Skills are reusable across many Projects and chats.
 
-For BH, the "voice" skill is the perfect starter Skill. It encodes:
+For BrookHaven, the "voice" skill is the perfect starter Skill. It encodes:
 - Our tone (friendly, professional, low fluff)
 - Standard sign-offs and signatures
 - Phrasings we use ("Just confirming…" not "I am writing to inform you that…")
@@ -312,30 +312,30 @@ You want to see variety: AR follow-up, client doc request, internal status updat
       body: `Open a doc. As you read each example, jot:
 
 - What's the average sentence length?
-- Does the writer use first-person ("I'll send that over") or third-person ("BH will be in touch")?
+- Does the writer use first-person ("I'll send that over") or third-person ("BrookHaven will be in touch")?
 - Are paragraphs short (2-3 lines) or long?
 - What's the sign-off style?
 - Are there phrases that appear in 3+ examples?
 
-After 10 examples you'll have a clear picture. Most BH writing tends to be: short paragraphs, first-person, friendly-but-direct, no corporate filler.`,
+After 10 examples you'll have a clear picture. Most BrookHaven writing tends to be: short paragraphs, first-person, friendly-but-direct, no corporate filler.`,
     },
     {
       title: "Go to Claude.ai → Skills → New Skill",
       body: `In Claude.ai, click your profile → **Settings** → **Skills** → **+ New Skill**.
 
-Name: \`Brookhaven voice\`
-Description: \`Apply when drafting any external or internal Brookhaven communication — emails, Telegram, social posts, status updates. Captures our tone and standard phrasings.\``,
+Name: \`BrookHaven voice\`
+Description: \`Apply when drafting any external or internal BrookHaven communication — emails, Telegram, social posts, status updates. Captures our tone and standard phrasings.\``,
       callout: {
         variant: "info",
-        body: "The description is what Claude reads to decide whether to use the skill. Make it specific — 'BH communications' is better than 'writing'.",
+        body: "The description is what Claude reads to decide whether to use the skill. Make it specific — 'BrookHaven communications' is better than 'writing'.",
       },
     },
     {
       title: "Write the skill body using this template",
       body: `Paste this into the skill body and adjust for what you actually saw in the examples:`,
-      prompt: `# Brookhaven Voice
+      prompt: `# BrookHaven Voice
 
-Apply this skill when drafting any communication that goes out under the Brookhaven name — emails, Telegram posts, social, internal status updates, client newsletters.
+Apply this skill when drafting any communication that goes out under the BrookHaven name — emails, Telegram posts, social, internal status updates, client newsletters.
 
 ## Tone
 
@@ -392,7 +392,7 @@ Try a prompt like:`,
       prompt: `Draft an email to a client confirming we received their Q1 documents and outlining what we'll do next. The client is BrightPoint, contact is Sarah, we got everything except the bank reconciliation for Feb.`,
     },
     {
-      title: "Read the output — does it sound like BH?",
+      title: "Read the output — does it sound like BrookHaven?",
       body: `If yes: you're done. Share the skill with the team.
 
 If no: figure out what's off. Is it too formal? Too long? Wrong sign-off? Go back to the skill body and add a rule. Re-test. Iterate.
@@ -403,7 +403,7 @@ Most skills get to "this sounds right" in 2-3 iterations.`,
       title: "Share with the team",
       body: `In Claude.ai's Skills settings, you can share a skill with your team (Team / Enterprise plans).
 
-Send a short Telegram message: *"New shared skill called 'Brookhaven voice' — apply it whenever you're drafting anything that goes out under our name. It captures our tone."*`,
+Send a short Telegram message: *"New shared skill called 'BrookHaven voice' — apply it whenever you're drafting anything that goes out under our name. It captures our tone."*`,
     },
     {
       title: "Review quarterly",
@@ -412,7 +412,7 @@ Send a short Telegram message: *"New shared skill called 'Brookhaven voice' — 
   ],
   pitfalls: [
     "Writing the skill body in generic 'be professional' language. The whole value is in being SPECIFIC about phrasings we do and don't use.",
-    "Skipping the example-collection step. Without seeing real BH writing, you'll guess wrong about what our voice actually is.",
+    "Skipping the example-collection step. Without seeing real BrookHaven writing, you'll guess wrong about what our voice actually is.",
     "Sharing the skill before testing it on 5+ realistic drafts.",
     "Treating the skill as a finished artifact. Voice evolves. Review quarterly.",
   ],

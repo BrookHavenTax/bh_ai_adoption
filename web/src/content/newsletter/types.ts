@@ -26,7 +26,7 @@ export interface NewsletterItem {
   status?: LegislativeStatus;
   /** Federal / GA / multi-state / specific state */
   scope?: string;
-  /** 1-2 sentences specific to BH's clients and workflow */
+  /** 1-2 sentences specific to BrookHaven's clients and workflow */
   whatItMeans: string;
   /** Which client groups are affected (purely informational) */
   affectsBrackets?: string[];
@@ -45,11 +45,11 @@ export interface NewsletterIssue {
   publishedDate: string;
   /** 1-2 paragraph editor's note. Markdown allowed. */
   intro: string;
-  /** Section 1 — primary focus per BH leadership */
+  /** Section 1 — primary focus per BrookHaven leadership */
   taxLegislation: NewsletterItem[];
   /** Optional message if section is empty */
   noTaxNews?: string;
-  /** Section 2 — secondary, AI tools relevant to BH workflows */
+  /** Section 2 — secondary, AI tools relevant to BrookHaven workflows */
   aiTools: NewsletterItem[];
   noAiNews?: string;
   /** Optional closing note from the editor */

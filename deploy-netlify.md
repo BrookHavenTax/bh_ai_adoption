@@ -1,4 +1,4 @@
-# Deploying the BH AI Adoption Hub to Netlify (free)
+# Deploying the BrookHaven AI Integrations Hub to Netlify (free)
 
 The site is a static React/Vite build. Netlify's free tier covers static
 sites with auto-deploys from GitHub, free SSL, a custom subdomain, and
@@ -177,7 +177,7 @@ locally with `npm run typecheck` from `web/`, push, redeploy.
 
 ---
 
-## Cost projection for BH
+## Cost projection for BrookHaven
 
 Assuming:
 - ~20 coworkers visit the site

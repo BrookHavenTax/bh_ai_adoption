@@ -2,7 +2,7 @@ import type { Tutorial } from "../types";
 
 export const dropboxNamingConvention: Tutorial = {
   slug: "dropbox-naming-convention",
-  title: "The Brookhaven file naming convention",
+  title: "The BrookHaven file naming convention",
   subtitle:
     "Process before AI. Lock the rule, then AI helps everyone follow it.",
   emoji: "🗂️",
@@ -97,7 +97,7 @@ If someone scans a doc and isn't sure which subfolder it goes in, they put it in
     {
       title: "Use Claude to draft the 1-page policy doc",
       body: `Open Claude.ai and ask it to draft the staff-facing policy doc. Prompt:`,
-      prompt: `Draft a 1-page Brookhaven file naming policy for staff. Friendly tone. Include:
+      prompt: `Draft a 1-page BrookHaven file naming policy for staff. Friendly tone. Include:
 
 1. The naming format: YYYY-MM-DD_CLIENTCODE_DocType_description.pdf
 2. Why we use this (5 short bullets)
@@ -143,9 +143,9 @@ export const dropboxAutoRename: Tutorial = {
   toolIds: ["dropbox", "adobe-pdf"],
   aiTools: ["Claude.ai", "Claude Cowork (PDF skill)"],
   prerequisites: [
-    "The Brookhaven naming convention is published and agreed",
+    "The BrookHaven naming convention is published and agreed",
     "Dropbox installed locally on at least one workstation (we'll run the watcher there)",
-    "The Brookhaven client code source-of-truth list, in a CSV or Notion table",
+    "The BrookHaven client code source-of-truth list, in a CSV or Notion table",
   ],
   whenToUse:
     "Whenever scanned documents arrive without names — physical mail scans, emailed PDFs with cryptic filenames like 'scan_001.pdf', screenshots saved as PDF.",
@@ -167,7 +167,7 @@ This is the right balance between speed and trust.`,
       title: "Create the inbox folder",
       body: `In Dropbox, create \`/00-Inbox-To-Rename/\` at the top level. This is where every unnamed scan goes — from scanner outputs, from emails, from anywhere.
 
-Everyone at BH agrees: if you can't name a file properly when you save it, put it here. The watcher catches it within minutes.`,
+Everyone at BrookHaven agrees: if you can't name a file properly when you save it, put it here. The watcher catches it within minutes.`,
     },
     {
       title: "Set up the rename prompt in a Claude Project",
@@ -179,7 +179,7 @@ In Project knowledge, paste:
 3. The client code source-of-truth list (as CSV text or attached file)
 
 In custom instructions, paste:`,
-      prompt: `You rename Brookhaven PDFs to match our naming convention.
+      prompt: `You rename BrookHaven PDFs to match our naming convention.
 
 When I paste or attach a PDF, you respond ONLY in this JSON shape (no extra prose):
 
@@ -238,7 +238,7 @@ def propose_rename(pdf_path: Path) -> dict:
                 "content": [
                     {"type": "document", "source": {"type": "base64", "media_type": "application/pdf",
                      "data": __import__("base64").b64encode(f.read()).decode()}},
-                    {"type": "text", "text": "Rename this per the Brookhaven convention."},
+                    {"type": "text", "text": "Rename this per the BrookHaven convention."},
                 ],
             }],
             system="(paste your custom instructions from the Project here)",
@@ -442,7 +442,7 @@ Store each embedding with metadata: file path, client code (parsed from name), d
 1. Embed the query → get a query vector
 2. Search vector store for top-20 most-similar chunks
 3. Pass those chunks + the original query to Claude with a prompt like:`,
-      prompt: `You're searching internal Brookhaven documents. The user asked:
+      prompt: `You're searching internal BrookHaven documents. The user asked:
 
 "{user query}"
 

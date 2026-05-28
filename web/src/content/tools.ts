@@ -18,9 +18,9 @@ Nothing leaves your browser unless you click send. The reply lives in your Outlo
 **Also useful:**
 - Paste any email into Claude.ai for a deeper rewrite
 - Save common prompts in your Claude.ai "Projects" so you can run them in one click
-- Build a "Brookhaven email voice" Claude Skill — see the tutorial`,
+- Build a "BrookHaven email voice" Claude Skill — see the tutorial`,
     limitations:
-      "No first-party Anthropic plugin for Outlook desktop. Microsoft Copilot for M365 fills this niche if Brookhaven adds the Copilot plan; until then, work on Outlook web with Claude in Chrome.",
+      "No first-party Anthropic plugin for Outlook desktop. Microsoft Copilot for M365 fills this niche if BrookHaven adds the Copilot plan; until then, work on Outlook web with Claude in Chrome.",
     recommendedTutorialSlugs: [
       "email-first-draft",
       "claude-skill-bh-voice",
@@ -36,7 +36,7 @@ Nothing leaves your browser unless you click send. The reply lives in your Outlo
     whatItDoes: "Internal team chat and the channel where the weekly AI newsletter will land.",
     withClaudeToday: `**Telegram's Bot API is one of the friendliest in the industry.** A few practical builds:
 
-- **BH Bot** — a bot you DM with "what's the status of TKI close?" — bot queries Monday + Dropbox + QBO via Claude and answers
+- **BrookHaven Bot** — a bot you DM with "what's the status of TKI close?" — bot queries Monday + Dropbox + QBO via Claude and answers
 - **Daily team digest** — Claude reads yesterday's Monday activity + today's calendar, posts a 1-paragraph summary each morning
 - **Compliance alert bot** — when something falls behind, the bot pings the right person
 - **Newsletter delivery** — the weekly AI newsletter posts to a dedicated channel

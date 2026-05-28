@@ -1,4 +1,4 @@
-// Content type definitions for the BH AI Adoption hub.
+// Content type definitions for the BrookHaven AI Adoption hub.
 // All content is typed and cross-linked by stable string IDs.
 
 export type Difficulty = "Beginner" | "Intermediate" | "Advanced";

@@ -40,7 +40,7 @@ export function NewsletterIndex() {
         <div className="relative">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-900 dark:text-emerald-200 rounded-full text-xs font-bold mb-4">
             <FileText size={13} aria-hidden="true" />
-            BH MONTHLY
+            BrookHaven MONTHLY
           </div>
           <h1 className="text-3xl sm:text-5xl font-bold text-slate-900 dark:text-slate-50 leading-tight tracking-tight mb-4 max-w-3xl">
             Tax + AI updates, in digestible bites.
@@ -110,7 +110,7 @@ export function NewsletterIndex() {
                 <strong>Summary</strong> — 2-3 sentences plain English
               </li>
               <li>
-                <strong>What it means for BH</strong> — 1-2 sentences tied to
+                <strong>What it means for BrookHaven</strong> — 1-2 sentences tied to
                 our clients and workflow
               </li>
               <li>
@@ -154,7 +154,7 @@ function IssueCard({
         </span>
       </div>
       <h3 className="text-xl font-bold text-slate-900 dark:text-slate-50 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors mb-2">
-        BH Monthly — {issue.monthLabel}
+        BrookHaven Monthly — {issue.monthLabel}
       </h3>
       <div className="flex gap-2 mt-3">
         <Badge variant="green">
@@ -210,7 +210,7 @@ export function NewsletterDetail() {
         </Link>
         <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-3">
           <FileText size={12} aria-hidden="true" />
-          BH Monthly · {issue.monthLabel}
+          BrookHaven Monthly · {issue.monthLabel}
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-50 leading-tight tracking-tight mb-4">
           Tax + AI updates for {issue.monthLabel}
@@ -366,7 +366,7 @@ function ItemCard({
           <div
             className={`text-xs uppercase tracking-wider font-bold mb-1 ${kind === "tax" ? "text-emerald-800 dark:text-emerald-300" : "text-brand-800 dark:text-brand-300"}`}
           >
-            What this means for BH
+            What this means for BrookHaven
           </div>
           <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
             {item.whatItMeans}

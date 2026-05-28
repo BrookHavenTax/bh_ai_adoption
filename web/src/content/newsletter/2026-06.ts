@@ -1,7 +1,7 @@
 import type { NewsletterIssue } from "./types";
 
 /**
- * BH Monthly — June 2026.
+ * BrookHaven Monthly — June 2026.
  *
  * Web-researched and assembled in-session (hybrid authorship). All items
  * link to primary or reputable secondary sources — verify against the
@@ -16,7 +16,7 @@ export const june2026: NewsletterIssue = {
   monthLabel: "June 2026",
   publishedDate: "2026-06-01",
   authorship: "hybrid",
-  intro: `Welcome to **BH Monthly**. The headline this month is one big correction to a story we've been bracing for: **the TCJA "cliff" is gone.** The One Big Beautiful Bill Act (signed July 2025) made most of the 2017 tax cuts permanent — so the planning math we'd been running for a 2026 sunset no longer applies. The estate exemption actually went *up*, not down.
+  intro: `Welcome to **BrookHaven Monthly**. The headline this month is one big correction to a story we've been bracing for: **the TCJA "cliff" is gone.** The One Big Beautiful Bill Act (signed July 2025) made most of the 2017 tax cuts permanent — so the planning math we'd been running for a 2026 sunset no longer applies. The estate exemption actually went *up*, not down.
 
 Closer to home, **Georgia signed HB 463 on May 11** — a faster rate cut plus new tips/overtime relief. And on the AI side, **Claude for Small Business launched May 13** with a Monthly Close workflow that maps almost exactly to what Will does across our entities. Details below — skim in 90 seconds, dig in where it touches your desk.`,
 
@@ -134,7 +134,7 @@ Closer to home, **Georgia signed HB 463 on May 11** — a faster rate cut plus n
       summary:
         "Anthropic launched Claude for Small Business on May 13, 2026 — a packaged set of connectors plus 15 ready-to-run agentic workflows that put Claude inside QuickBooks, PayPal, HubSpot, Canva, DocuSign, Google Workspace, and Microsoft 365. Standout workflows: a Monthly Close that reconciles books against settlements, flags discrepancies, writes a plain-English P&L, and produces a close packet to forward to an accountant; plus payroll planning, invoice chasing, margin analysis, contract review, and tax-season prep. Every workflow is owner-initiated and approval-based — nothing sends, posts, or pays without explicit sign-off.",
       whatItMeans:
-        "This is the most BH-relevant AI release in months. The Monthly Close workflow maps almost exactly to what Will runs across 11+ entities, and 'invoice chasing' overlaps our AR follow-up work. The approval-based model is exactly the human-in-the-loop pattern we already require. Worth a pilot on one entity to compare against our current QBO + Claude tutorials.",
+        "This is the most BrookHaven-relevant AI release in months. The Monthly Close workflow maps almost exactly to what Will runs across 11+ entities, and 'invoice chasing' overlaps our AR follow-up work. The approval-based model is exactly the human-in-the-loop pattern we already require. Worth a pilot on one entity to compare against our current QBO + Claude tutorials.",
       impact: "high",
       sources: [
         {

@@ -1,6 +1,6 @@
 name: Monthly Newsletter
 
-# Generates the BH Monthly newsletter on the 1st of each month at 12:00 UTC
+# Generates the BrookHaven Monthly newsletter on the 1st of each month at 12:00 UTC
 # (7am Atlanta time), commits the new content/newsletter/YYYY-MM.ts file, and
 # pushes — Netlify auto-deploys within ~2 minutes.
 #
@@ -65,7 +65,7 @@ jobs:
 
       - name: Commit and push
         run: |
-          git config user.name "BH Newsletter Bot"
+          git config user.name "BrookHaven Newsletter Bot"
           git config user.email "bot@brookhaventax.local"
 
           MONTH="${{ steps.month.outputs.month }}"

@@ -140,7 +140,7 @@ export const qboArFollowup: Tutorial = {
   prerequisites: [
     "Claude.ai with QBO connector",
     "Knowledge of each major client's payment-pattern history (or just let Claude infer it from the data)",
-    "The 'Brookhaven voice' Claude Skill (recommended)",
+    "The 'BrookHaven voice' Claude Skill (recommended)",
   ],
   whenToUse:
     "Weekly AR review. Especially valuable when you have 30+ open invoices across multiple entities.",
@@ -181,7 +181,7 @@ Tone: gentle, assume oversight. "Just a heads-up that Invoice X is 15 days past 
 **Tier 4 — 'Stop the bleeding' clients (60+ days past due, multiple open invoices):**
 Tone: still professional but escalating. Direct ask. Offer to set up a call.
 
-For each tier, draft ONE template email I can lightly personalize per client. Use the Brookhaven voice (friendly, professional, no corporate-speak). Under 100 words each. Sign with "Thanks, [my name]"`,
+For each tier, draft ONE template email I can lightly personalize per client. Use the BrookHaven voice (friendly, professional, no corporate-speak). Under 100 words each. Sign with "Thanks, [my name]"`,
     },
     {
       title: "Personalize and send",
@@ -306,7 +306,7 @@ Don't tell me everything looks fine if it does — tell me specifically what you
 - Any items still pending or needing leadership input?
 - One-sentence "ready for review" or "needs more work" verdict
 
-Use the Brookhaven voice (friendly, direct, no fluff).`,
+Use the BrookHaven voice (friendly, direct, no fluff).`,
     },
     {
       title: "Repeat for the next entity",

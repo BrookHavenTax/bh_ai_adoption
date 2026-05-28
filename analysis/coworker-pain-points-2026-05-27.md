@@ -1,10 +1,10 @@
-# Brookhaven AI Adoption — Coworker Pain-Point Analysis & AI Solutions Map
+# BrookHaven AI Adoption — Coworker Pain-Point Analysis & AI Solutions Map
 
 **Source:** anonymized internal survey, 8 responses, May 21–27, 2026
 **Tools in our stack:** Outlook · Telegram · Dropbox · Adobe (PDF) · Monday.com · Teams
 **Secondary tools mentioned:** QuickBooks Online, UltraTax, Concur, AMEX, ADP, Workforce, Posh, OneDrive
 
-This doc maps every reported pain point to a concrete AI/Claude solution, grouped by theme, with honest "not yet solvable" callouts. It's the source material for the role-specific tutorials we publish on the BH AI Adoption hub.
+This doc maps every reported pain point to a concrete AI/Claude solution, grouped by theme, with honest "not yet solvable" callouts. It's the source material for the role-specific tutorials we publish on the BrookHaven AI Adoption hub.
 
 **Anonymized role IDs used throughout this doc and the web app:**
 
@@ -44,7 +44,7 @@ The single most important meta-takeaway: **the Legal Ops Director explicitly war
 **What's possible today:**
 - **Claude in Chrome extension** — sits on top of Outlook web. Highlight a thread, ask "summarize," "draft a reply that says we still need the W-9," "is this urgent?". Nothing leaves the browser unless you click send.
 - **Claude.ai (chat) with saved prompts** — each person builds a small library of templates: "AR follow-up @ 45 days," "trustee statement cover note," "client checklist nudge." Paste situation → get draft.
-- **Claude Skills** — define one "Brookhaven email voice" skill that captures our standard tone, signatures, phrasings. Everyone reuses it, voice stays consistent.
+- **Claude Skills** — define one "BrookHaven email voice" skill that captures our standard tone, signatures, phrasings. Everyone reuses it, voice stays consistent.
 
 **Not solvable today:** Native auto-drafting inside Outlook desktop without copy/paste. (Microsoft Copilot for M365 does this, but it's a separate paid plan; Claude doesn't have a first-party Outlook plugin yet.)
 
@@ -168,7 +168,7 @@ The Accounting Lead single-handedly runs accounting for 11+ entities — $4.1M a
 | Tool | What Claude/Cowork can do **today** | Notes |
 |---|---|---|
 | **Outlook** | Draft replies, summarize threads, triage urgency — via Claude in Chrome on Outlook web | No native Outlook plugin from Anthropic |
-| **Telegram** | Build a BH bot for queries + daily digests + newsletter delivery via Bot API | Posting-only by default for privacy |
+| **Telegram** | Build a BrookHaven bot for queries + daily digests + newsletter delivery via Bot API | Posting-only by default for privacy |
 | **Dropbox** | Semantic search, auto-rename scans, dedup, summarization via Dropbox MCP | Process must come first |
 | **Adobe PDF** | Adobe = viewer; Claude = reader. Native multi-page PDF support | Stronger than Adobe AI for legal/tax docs |
 | **Monday.com** | Read/write via Monday API. Replace fragile native automations with debuggable Claude scripts | Heed the over-automation warning |

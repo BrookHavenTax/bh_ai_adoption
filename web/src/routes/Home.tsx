@@ -59,7 +59,7 @@ export function Home() {
         </div>
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-900 dark:text-brand-200 rounded-full text-xs font-medium mb-5 animate-fade-in">
           <Sparkles size={13} aria-hidden="true" />
-          Internal — Brookhaven coworkers
+          Internal — BrookHaven coworkers
         </div>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-slate-50 leading-[1.05] mb-5 max-w-4xl tracking-tight">
           AI tools, mapped to{" "}
@@ -75,7 +75,7 @@ export function Home() {
             Claude Cowork
           </strong>
           , and other AI tools to save time on the work you actually do at
-          Brookhaven.
+          BrookHaven.
         </p>
       </section>
 

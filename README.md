@@ -1,6 +1,6 @@
-# Brookhaven AI Adoption
+# BrookHaven AI Adoption
 
-Internal hub for rolling out Claude, Claude Cowork, and AI tooling to Brookhaven coworkers — built from a real survey of their daily tasks and pain points.
+Internal hub for rolling out Claude, Claude Cowork, and AI tooling to BrookHaven coworkers — built from a real survey of their daily tasks and pain points.
 
 ## What's in this repo
 
@@ -8,7 +8,7 @@ Internal hub for rolling out Claude, Claude Cowork, and AI tooling to Brookhaven
 bh_ai_adoption/
 ├── analysis/                   # source-of-truth pain-point analysis (markdown)
 ├── data/                       # raw survey data (gitignored — contains coworker info)
-├── web/                        # React + TypeScript site (the AI Adoption Hub)
+├── web/                        # React + TypeScript site (the AI Integrations Hub)
 │   ├── src/
 │   │   ├── content/            # typed content: roles, themes, tools, tutorials
 │   │   ├── components/         # reusable UI
@@ -28,7 +28,7 @@ bh_ai_adoption/
 
 ## What's in here
 
-1. **The AI Adoption Hub site (`web/`)** — React/TypeScript, 32 tutorials, dedicated Skills + Cowork sections, dark mode, command palette, step progress tracking, full search.
+1. **The AI Integrations Hub site (`web/`)** — React/TypeScript, 32 tutorials, dedicated Skills + Cowork sections, dark mode, command palette, step progress tracking, full search.
 2. **Tutorial audio narration (`scripts/`)** — script + MP3 generators that produce voiceover audio for each tutorial. Run-once setup; outputs live in `web/public/audio/`. Audio player appears automatically on tutorials that have an MP3.
 3. **Monthly newsletter (`newsletter/` + `web/src/content/newsletter/`)** — auto-generated 1st of every month via GitHub Actions. Two sections: tax legislation (primary) + AI tools (secondary). See [`newsletter/README.md`](./newsletter/README.md).
 
@@ -59,7 +59,7 @@ git push origin main   # Netlify builds + deploys automatically
 
 Everything on the site is driven by typed content in `web/src/content/`:
 
-- `roles.ts` — 8 anonymized BH roles (Client Resource Specialist, Tax Lead, etc.) with their pain points and recommended tutorials
+- `roles.ts` — 8 anonymized BrookHaven roles (Client Resource Specialist, Tax Lead, etc.) with their pain points and recommended tutorials
 - `themes.ts` — 8 pain themes that came out of the survey
 - `tools.ts` — per-tool playbooks (Outlook, Telegram, Dropbox, Adobe PDF, Monday, Teams, QBO)
 - `tutorials/` — 32 detailed tutorials with steps, copyable prompts, callouts, and cross-links (8 of which are Claude Skills, 5 are Claude Cowork workflows)
@@ -73,7 +73,7 @@ The survey contains real coworker names. Names have been stripped from `analysis
 
 ## Tone
 
-Friendly, casual, light emoji ok. The audience is BH coworkers across mixed technical comfort — plain language wins.
+Friendly, casual, light emoji ok. The audience is BrookHaven coworkers across mixed technical comfort — plain language wins.
 
 ## Audio narration
 

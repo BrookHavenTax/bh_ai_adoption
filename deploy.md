@@ -1,4 +1,4 @@
-# Deploying the BH AI Adoption Hub to AWS EC2
+# Deploying the BrookHaven AI Integrations Hub to AWS EC2
 
 The site is a static React + Vite build. The deployment target is an EC2 instance running nginx that serves the static `dist/` directory. This doc covers a first-time deploy plus the steady-state rebuild/redeploy cycle.
 
@@ -10,7 +10,7 @@ The site is a static React + Vite build. The deployment target is an EC2 instanc
   produces dist/                          ↓
                                         nginx (port 80/443)
                                           ↓
-                                     [ Brookhaven coworkers' browsers ]
+                                     [ BrookHaven coworkers' browsers ]
 ```
 
 No backend, no database, no API. Just static files served by nginx.

@@ -1,4 +1,4 @@
-# Sources for the BH Monthly newsletter generator.
+# Sources for the BrookHaven Monthly newsletter generator.
 #
 # Each entry: a human-readable name, the URL to fetch, and an optional priority.
 # The generator (scripts/generate-newsletter.ts) fetches each URL, extracts
@@ -37,7 +37,7 @@ tax_legislation:
     url: https://www.journalofaccountancy.com/news/tax
     priority: medium
 
-  # State — Georgia (BH's primary state)
+  # State — Georgia (BrookHaven's primary state)
   - name: Georgia Department of Revenue — News
     url: https://dor.georgia.gov/press-releases
     priority: high
@@ -54,7 +54,7 @@ tax_legislation:
 # Section 2 — AI tools (secondary focus)
 # ─────────────────────────────────────────────────────────────────────────
 ai_tools:
-  # Anthropic — first priority since most BH tutorials are Claude-based
+  # Anthropic — first priority since most BrookHaven tutorials are Claude-based
   - name: Anthropic News
     url: https://www.anthropic.com/news
     priority: high
@@ -70,7 +70,7 @@ ai_tools:
     url: https://www.microsoft.com/en-us/microsoft-365/blog/
     priority: medium
 
-  # BH-specific tools — Monday, Dropbox, QBO
+  # BrookHaven-specific tools — Monday, Dropbox, QBO
   - name: Monday.com — Product updates
     url: https://monday.com/blog/news/
     priority: low

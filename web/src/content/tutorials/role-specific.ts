@@ -264,7 +264,7 @@ Click the Claude in Chrome icon in your browser toolbar. You should see a side p
       body: `Click an email. In the Claude side panel, paste:`,
       prompt: `Read this email. Tell me:
 
-1. **Who at BH should handle this?** (use the routing rules below)
+1. **Who at BrookHaven should handle this?** (use the routing rules below)
 2. **Why?** (one sentence)
 3. **Urgency:** Critical (need response today) / Normal (this week) / FYI (no action needed)
 4. **What to do next:** Forward / Reply with [draft below] / Flag / Archive
@@ -316,7 +316,7 @@ export const socialMediaDrafting: Tutorial = {
   slug: "social-media-drafting",
   title: "Social media post drafting with Claude",
   subtitle:
-    "Generate first-draft posts that sound like Brookhaven, not like generic LinkedIn content.",
+    "Generate first-draft posts that sound like BrookHaven, not like generic LinkedIn content.",
   emoji: "📱",
   format: "Project",
   difficulty: "Beginner",
@@ -324,18 +324,18 @@ export const socialMediaDrafting: Tutorial = {
   audienceRoleIds: ["paralegal", "strategy-lead"],
   themeIds: ["email-triage"],
   toolIds: [],
-  aiTools: ["Claude.ai", "Brookhaven voice Skill (recommended)"],
+  aiTools: ["Claude.ai", "BrookHaven voice Skill (recommended)"],
   prerequisites: [
     "Claude.ai account",
-    "5-10 examples of past BH posts that worked well",
-    "The Brookhaven voice Claude Skill (or willingness to build it as part of this)",
+    "5-10 examples of past BrookHaven posts that worked well",
+    "The BrookHaven voice Claude Skill (or willingness to build it as part of this)",
   ],
   whenToUse:
     "When social media drafting is eating significant time in your week (the Paralegal flagged this at 40% of the day).",
   steps: [
     {
-      title: "Set up a 'BH social' Project",
-      body: `Open Claude.ai → Projects → +New. Name: *"BH social media."*
+      title: "Set up a 'BrookHaven social' Project",
+      body: `Open Claude.ai → Projects → +New. Name: *"BrookHaven social media."*
 
 In Project knowledge, paste:
 - 5-10 past posts that performed well (or that leadership liked)
@@ -346,7 +346,7 @@ In Project knowledge, paste:
     {
       title: "Custom instructions",
       body: `Paste:`,
-      prompt: `You draft social media posts for Brookhaven. Apply the Brookhaven voice (friendly, professional, direct — no corporate-speak).
+      prompt: `You draft social media posts for BrookHaven. Apply the BrookHaven voice (friendly, professional, direct — no corporate-speak).
 
 When I give you a topic or angle, produce:
 
@@ -420,7 +420,7 @@ Your drafts get sharper each month.`,
     "Posting Claude's first draft without editing. Always edit.",
     "Letting facts slip through. Especially with legal / tax content. Verify before posting.",
     "Letting the Project's example library go stale. Update monthly with what's working.",
-    "Sounding generic. If a post would work equally well for any firm, it's not BH-specific enough.",
+    "Sounding generic. If a post would work equally well for any firm, it's not BrookHaven-specific enough.",
   ],
   relatedTutorialSlugs: ["claude-skill-bh-voice", "email-first-draft"],
 };
@@ -469,7 +469,7 @@ import anthropic
 
 client = anthropic.Anthropic()
 
-CHECKLIST_PROMPT = """You receive emails from BH clients submitting documents.
+CHECKLIST_PROMPT = """You receive emails from BrookHaven clients submitting documents.
 For each email, identify:
 
 1. Which client is this from? (match against the client list provided)

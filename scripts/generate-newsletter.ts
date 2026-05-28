@@ -71,9 +71,9 @@ interface NewsletterJson {
   closing?: string;
 }
 
-const SYSTEM_PROMPT = `You are the editor of the Brookhaven Monthly newsletter — an internal monthly digest for a tax / legal / accounting / wealth-management firm serving clients from middle class to ultra high net worth.
+const SYSTEM_PROMPT = `You are the editor of the BrookHaven Monthly newsletter — an internal monthly digest for a tax / legal / accounting / wealth-management firm serving clients from middle class to ultra high net worth.
 
-Audience: BH staff (Tax Lead, Accounting Lead, Legal Operations Director, Paralegal, Admin Manager, Financial Advisor). They want practical "what's moving and what does it mean for our clients" — not legislative deep-dives.
+Audience: BrookHaven staff (Tax Lead, Accounting Lead, Legal Operations Director, Paralegal, Admin Manager, Financial Advisor). They want practical "what's moving and what does it mean for our clients" — not legislative deep-dives.
 
 Tone: friendly, professional, direct, plain English. Short sentences. Confident without being preachy. No emoji in body text.
 
@@ -84,7 +84,7 @@ For each item determine:
 - SUMMARY: 2-3 sentences plain English on what is actually happening
 - STATUS (tax items only): one of "Idea/Discussion", "Proposed bill", "Committee markup", "Passed one chamber", "Passed both chambers", "Signed into law", "Effective", "Stalled", "Court / regulatory action", "Withdrawn"
 - SCOPE (optional): "Federal", "GA state", "Multi-state", or a specific state
-- WHAT IT MEANS FOR BH: 1-2 sentences tied to BH client work — estate planning, tax filing, trust administration, multi-entity bookkeeping (Will runs 11+ entities), client communications. Reference BH specifics where apt (Lisa = Tax Lead and our cautious bellwether adopter; the ILIT board incident; the 460-bills-a-year accounting volume).
+- WHAT IT MEANS FOR BrookHaven: 1-2 sentences tied to BrookHaven client work — estate planning, tax filing, trust administration, multi-entity bookkeeping (Will runs 11+ entities), client communications. Reference BrookHaven specifics where apt (Lisa = Tax Lead and our cautious bellwether adopter; the ILIT board incident; the 460-bills-a-year accounting volume).
 - AFFECTSBRACKETS (optional, tax items): subset of ["Middle class", "High net worth", "Ultra high net worth"]
 - IMPACT: "high" | "medium" | "low" | "informational"
 - SOURCES: at least one real URL you actually found via search. Never invent URLs.
@@ -127,7 +127,7 @@ async function generateIssue(
   const topics = (sources.filters?.prioritize_topics ?? []).join(", ");
   const lookback = sources.filters?.lookback_days ?? 35;
 
-  const userPrompt = `Research and write the Brookhaven Monthly newsletter for ${monthLabel}.
+  const userPrompt = `Research and write the BrookHaven Monthly newsletter for ${monthLabel}.
 
 Use web search to find what's actually new in roughly the last ${lookback} days.
 
@@ -312,7 +312,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`Generating BH Monthly for ${monthLabel} (${month}) with web search...\n`);
+  console.log(`Generating BrookHaven Monthly for ${monthLabel} (${month}) with web search...\n`);
 
   const sourcesRaw = await readFile(SOURCES_PATH, "utf8");
   const sources = parseYaml(sourcesRaw) as SourcesFile;

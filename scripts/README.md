@@ -1,4 +1,4 @@
-# Brookhaven AI Adoption — generator scripts
+# BrookHaven AI Adoption — generator scripts
 
 Three things in this folder, all runnable from here:
 

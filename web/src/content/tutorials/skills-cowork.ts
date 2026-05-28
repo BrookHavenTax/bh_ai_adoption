@@ -39,7 +39,7 @@ export const claudeSkills101: Tutorial = {
       title: "What a Skill actually is",
       body: `A **Skill** is a small, named bundle of instructions Claude can apply automatically when the task matches. Think of it as a saved playbook:
 
-- A **name** (e.g. "Brookhaven email voice")
+- A **name** (e.g. "BrookHaven email voice")
 - A **description** — the trigger sentence Claude reads to decide whether to pick the skill up
 - A **body** — the detailed instructions Claude follows when the skill activates
 - Optional **reference files** — examples, templates, glossaries
@@ -56,7 +56,7 @@ Unlike Project knowledge (which is scoped to one Project), a Skill is reusable a
 
 - **Raw prompt** — one-off question, no setup
 - **Project** — repeated work in one specific area, with shared files/knowledge (e.g. "every email to client X")
-- **Skill** — a STYLE or PATTERN that applies across many contexts (e.g. "anytime you draft for Brookhaven, use this voice")
+- **Skill** — a STYLE or PATTERN that applies across many contexts (e.g. "anytime you draft for BrookHaven, use this voice")
 
 If the same instructions apply to 5+ different chats, it's probably a Skill.`,
     },
@@ -71,7 +71,7 @@ Click **+ New Skill**.`,
       body: `The description is what Claude reads to decide if this skill matches the current task. Be **specific about the situation**, not the skill's mechanics.
 
 ❌ Bad: *"A skill for writing emails."* (too broad — Claude can't tell when this applies)
-✅ Good: *"Apply when drafting any external Brookhaven email to a client, vendor, or referral partner — covers AR follow-ups, status updates, document requests, and routine correspondence."*
+✅ Good: *"Apply when drafting any external BrookHaven email to a client, vendor, or referral partner — covers AR follow-ups, status updates, document requests, and routine correspondence."*
 
 Better descriptions = better automatic triggering. Mention specific scenarios.`,
     },
@@ -189,7 +189,7 @@ Each connector is built on **MCP (Model Context Protocol)** — Anthropic's open
 
 You'll see a list of available connectors — both official Anthropic ones and third-party ones from the MCP ecosystem. The catalog grows constantly.
 
-Common ones we care about at Brookhaven:
+Common ones we care about at BrookHaven:
 - **QuickBooks Online** (Anthropic official)
 - **Microsoft 365** (covers Outlook, Calendar)
 - **Dropbox**
@@ -198,7 +198,7 @@ Common ones we care about at Brookhaven:
     },
     {
       title: "Install your first connector",
-      body: `Pick the one with the highest payoff — for most BH workflows, that's **QuickBooks Online**. Click **Connect** → you'll be redirected to QBO's OAuth screen → log in → authorize Claude → redirected back.
+      body: `Pick the one with the highest payoff — for most BrookHaven workflows, that's **QuickBooks Online**. Click **Connect** → you'll be redirected to QBO's OAuth screen → log in → authorize Claude → redirected back.
 
 When you return to Claude.ai, the connector shows as **Active**.
 
@@ -245,7 +245,7 @@ Per-tool sequential workflows are usually faster than trying to make Claude jugg
       title: "Combine Cowork with Skills for maximum leverage",
       body: `Skills + Cowork is the killer combo. Pattern:
 
-- Build a **Skill** that captures HOW you handle a workflow (e.g. "AR follow-up drafting with the Brookhaven voice")
+- Build a **Skill** that captures HOW you handle a workflow (e.g. "AR follow-up drafting with the BrookHaven voice")
 - Use a **Cowork connector** to pull the data the skill operates on (e.g. QBO aging report)
 
 The skill provides the playbook; the connector provides the data. Together they automate end-to-end tasks while you stay in the loop on output.`,
@@ -419,7 +419,7 @@ Tweak the skill body after each session. After 5 mornings, it should feel like a
     },
     {
       title: "Bonus: pair with a Telegram bot for fully automated delivery",
-      body: `Once the skill is reliable, automate the data-gathering step too. A tiny Python script (see the "Build a Brookhaven Telegram bot" tutorial) can:
+      body: `Once the skill is reliable, automate the data-gathering step too. A tiny Python script (see the "Build a BrookHaven Telegram bot" tutorial) can:
 
 1. Pull this morning's calendar, Monday status, and Telegram highlights
 2. Feed them to Claude with this skill active
@@ -430,7 +430,7 @@ You go from "open Claude and paste" to "check Telegram at 8am, briefing already 
   ],
   pitfalls: [
     "Letting the briefing get too long. Hard cap at 200 words; longer briefings get skipped.",
-    "Building one shared 'BH morning briefing' skill across all roles. Roles have different priorities — build one per role group.",
+    "Building one shared 'BrookHaven morning briefing' skill across all roles. Roles have different priorities — build one per role group.",
     "Not feeding the skill any context and expecting magic. Skills don't read your inbox unless paired with a Cowork connector. Paste the data or wire up the connector.",
   ],
   relatedTutorialSlugs: [
@@ -1034,7 +1034,7 @@ export const coworkMondayStandup: Tutorial = {
   prerequisites: [
     "Cowork 101 read",
     "Claude.ai with Monday connector authorized (read-only is fine)",
-    "Telegram channel for the team (or Telegram bot per the 'Brookhaven Telegram bot' tutorial)",
+    "Telegram channel for the team (or Telegram bot per the 'BrookHaven Telegram bot' tutorial)",
     "Monday boards set up with clear status columns and per-person assignments",
   ],
   whenToUse:
@@ -1141,7 +1141,7 @@ response = client.messages.create(
 post_to_channel("#team-standup", response.content[0].text)
 \`\`\`
 
-See the *"Build a Brookhaven Telegram bot"* tutorial for the full Telegram wiring.`,
+See the *"Build a BrookHaven Telegram bot"* tutorial for the full Telegram wiring.`,
       callout: {
         variant: "info",
         body: "If your plan supports Anthropic Managed Agents, the scheduling is even simpler — the agent handles cron, connector access, and skill activation automatically.",

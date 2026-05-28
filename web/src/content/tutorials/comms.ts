@@ -91,7 +91,7 @@ This sounds obvious but is the most-skipped step. Don't skip it. The AI summariz
       body: `Once you have the action items, ask Claude:`,
       prompt: `For each action item above, draft a brief email TO the owner reminding them of what they committed to, with the deadline and any context they need. One email per owner; group all their actions in one email.
 
-Friendly tone (Brookhaven voice). Don't be preachy. Just confirming what they said they'd do.`,
+Friendly tone (BrookHaven voice). Don't be preachy. Just confirming what they said they'd do.`,
     },
   ],
   pitfalls: [
@@ -104,7 +104,7 @@ Friendly tone (Brookhaven voice). Don't be preachy. Just confirming what they sa
 
 export const telegramBotBh: Tutorial = {
   slug: "telegram-bot-bh",
-  title: "Build a Brookhaven Telegram bot",
+  title: "Build a BrookHaven Telegram bot",
   subtitle:
     "A bot the team can DM with questions — answers from Monday + Dropbox + QBO via Claude.",
   emoji: "🤖",
@@ -123,7 +123,7 @@ export const telegramBotBh: Tutorial = {
   prerequisites: [
     "Someone comfortable with Python (~300 lines)",
     "Anthropic API key",
-    "Telegram account with permission to add bots to the BH workspace",
+    "Telegram account with permission to add bots to the BrookHaven workspace",
     "Server / always-on machine to host the bot",
   ],
   whenToUse:
@@ -132,7 +132,7 @@ export const telegramBotBh: Tutorial = {
     {
       title: "Create the bot in Telegram",
       body: `Open Telegram. Search for **@BotFather**. Send \`/newbot\`. Follow the prompts:
-- Name: \`BH Assistant\`
+- Name: \`BrookHaven Assistant\`
 - Username: \`brookhaven_assistant_bot\` (or whatever's available)
 
 BotFather gives you a token. Save it in a password manager. It's the only credential the bot needs to function.`,
@@ -176,7 +176,7 @@ async def handle_message(update, context):
     user = update.message.from_user.username
 
     if not is_authorized(user):
-        await update.message.reply_text("Sorry, this bot is only available to BH staff.")
+        await update.message.reply_text("Sorry, this bot is only available to BrookHaven staff.")
         return
 
     # Multi-turn agent loop
@@ -187,7 +187,7 @@ async def handle_message(update, context):
             max_tokens=1500,
             tools=tools,
             messages=messages,
-            system="You're BH Assistant. Help BH staff find info from Monday, Dropbox, and QBO. Be concise. If you don't know, say so honestly.",
+            system="You're BrookHaven Assistant. Help BrookHaven staff find info from Monday, Dropbox, and QBO. Be concise. If you don't know, say so honestly.",
         )
         if resp.stop_reason == "end_turn":
             await update.message.reply_text(resp.content[0].text)
@@ -221,7 +221,7 @@ Implement \`search_monday(query)\`:
 Test it directly first. Then wire it into the bot. DM the bot "status of TKI close" — get an answer.`,
     },
     {
-      title: "Add authentication so only BH staff can use it",
+      title: "Add authentication so only BrookHaven staff can use it",
       body: `Inside \`is_authorized(user)\`, check against a whitelist of Telegram usernames. Store the whitelist in a file or environment variable.
 
 For sensitive queries (anything touching QBO), add a second check — only specific roles get those tools available.`,
@@ -235,7 +235,7 @@ For sensitive queries (anything touching QBO), add a second check — only speci
       body: `Options:
 - **EC2 / DigitalOcean droplet:** ~$5/mo, runs forever, easy SSH access
 - **Anthropic Managed Agents:** if available in your plan, hosts the bot for you
-- **Internal server:** if BH has an always-on machine
+- **Internal server:** if BrookHaven has an always-on machine
 
 Set up systemd (or pm2) so the bot auto-restarts on crash. Pipe logs to a file so you can debug.`,
     },

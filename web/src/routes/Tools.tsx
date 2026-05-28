@@ -24,13 +24,13 @@ export function ToolsIndex() {
       </h1>
       <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl text-lg">
         How Claude / Claude Cowork / Skills work with each tool in the
-        Brookhaven stack — what's possible today, what isn't, and the tutorials
+        BrookHaven stack — what's possible today, what isn't, and the tutorials
         for each.
       </p>
 
       <section className="mb-10">
         <h2 className="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">
-          Brookhaven stack
+          BrookHaven stack
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {stack.map((t, i) => (

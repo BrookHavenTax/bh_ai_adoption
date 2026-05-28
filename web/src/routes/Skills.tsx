@@ -168,7 +168,7 @@ export function SkillsIndex() {
             color="violet"
             useCase="Patterns that apply everywhere"
             best="When the same instructions apply across MANY chats and Projects (a style, a process, a domain)."
-            example='A "Brookhaven email voice" Skill that activates anytime you draft for the firm.'
+            example='A "BrookHaven email voice" Skill that activates anytime you draft for the firm.'
           />
         </div>
       </section>

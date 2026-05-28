@@ -21,7 +21,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR = join(__dirname, "narration-output");
 const MODEL = "claude-opus-4-7";
 
-const SYSTEM_PROMPT = `You convert written tutorials into spoken-narration scripts for an internal Brookhaven Tax AI adoption hub.
+const SYSTEM_PROMPT = `You convert written tutorials into spoken-narration scripts for an internal BrookHaven Tax AI adoption hub.
 
 WRITE THE SCRIPT AS IT WILL BE SPOKEN BY AN AI VOICE. NOT FOR READING ON A PAGE.
 
@@ -30,7 +30,7 @@ Constraints:
 - Conversational, warm, friendly, professional. NOT lecture-y. Like a smart colleague explaining over coffee.
 - Open with a one-sentence "what this is and who it's for."
 - Walk through the tutorial's actual content, condensed. Skip implementation minutiae (URLs, exact menu paths) — those belong on the written page. Focus on WHY and WHEN.
-- Reference real Brookhaven context where the tutorial does (Lisa, the ILIT board incident, the 460 bills/year, etc.).
+- Reference real BrookHaven context where the tutorial does (Lisa, the ILIT board incident, the 460 bills/year, etc.).
 - End with one specific suggested next action ("Open Claude.ai now and...").
 - NO bullet lists or numbered steps in the script — it must flow as natural speech.
 - NO emoji, no markdown, no code blocks, no asterisks for emphasis.

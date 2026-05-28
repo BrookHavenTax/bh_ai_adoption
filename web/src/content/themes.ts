@@ -19,7 +19,7 @@ export const themes: Theme[] = [
 **What works today:**
 - **Claude in Chrome** — overlays Outlook web. Highlight a thread → ask "summarize," "draft a reply that says we still need the W-9," "is this urgent?"
 - **Claude.ai with saved prompts** — a small library of canned starters per role
-- **A shared "Brookhaven email voice" Claude Skill** — captures our tone, standard phrasings, signatures. Used by everyone, voice stays consistent.
+- **A shared "BrookHaven email voice" Claude Skill** — captures our tone, standard phrasings, signatures. Used by everyone, voice stays consistent.
 
 **The 30-second workflow:** see a routine email → highlight or paste → "Draft a reply that…" → review, edit, send. Replace "I need to think about how to phrase this" with "I need to check what Claude wrote."`,
     notSolvable:
@@ -171,7 +171,7 @@ export const themes: Theme[] = [
     description: `**The pain:** *"How do we get info from legal to tax seamlessly without just letting someone know via Telegram?"* Context lives in heads, threads, and scattered Monday items. Hand-offs are lossy.
 
 **What works today:**
-- **Brookhaven Telegram bot** — DM "what's the status of TKI close?" → bot queries Monday + Dropbox + QBO → answers
+- **BrookHaven Telegram bot** — DM "what's the status of TKI close?" → bot queries Monday + Dropbox + QBO → answers
 - **Auto-routed handoff messages** — when a Monday item flips from "Legal: complete" to "Tax: ready," Claude generates the handoff with all needed context
 - **Daily team digest** — 1-paragraph "yesterday + today" per team, posted each morning`,
     tutorialSlugs: [
@@ -199,7 +199,7 @@ export const themes: Theme[] = [
 **Partial wins:**
 - A local script that takes a screenshot every N minutes and asks Claude "what client is this?" — opt-in, privacy-sensitive
 - Workforce timesheet API integration: Claude proposes corrections at EOD rather than starting from scratch
-- Microsoft Viva Insights (if Brookhaven is on the right M365 plan) gives passive activity tracking based on Outlook/Teams/Files
+- Microsoft Viva Insights (if BrookHaven is on the right M365 plan) gives passive activity tracking based on Outlook/Teams/Files
 
 Worth a discovery conversation before committing to a build path.`,
     notSolvable:

@@ -39,17 +39,23 @@ export function Layout({ onOpenPalette }: LayoutProps) {
           <div className="flex items-center justify-between h-16 gap-4">
             <Link
               to="/"
-              className="flex items-center gap-2 font-bold flex-shrink-0 group"
+              className="flex items-center gap-2.5 flex-shrink-0 group"
               data-testid="logo-link"
             >
-              <span
-                className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-100 dark:to-slate-300 text-amber-400 dark:text-amber-600 flex items-center justify-center text-sm font-bold shadow-sm group-hover:shadow-md transition-shadow"
-                aria-hidden="true"
-              >
-                BH
-              </span>
-              <span className="hidden sm:inline text-slate-900 dark:text-slate-100">
-                AI Adoption Hub
+              <img
+                src="/brookhaven-logo.svg"
+                alt="BrookHaven"
+                width={36}
+                height={36}
+                className="w-9 h-9 rounded-lg shadow-sm group-hover:shadow-md transition-shadow flex-shrink-0"
+              />
+              <span className="hidden sm:flex flex-col leading-tight">
+                <span className="font-bold text-sm text-slate-900 dark:text-slate-100">
+                  BrookHaven
+                </span>
+                <span className="text-[11px] -mt-0.5 text-slate-500 dark:text-slate-400">
+                  AI Integrations Hub
+                </span>
               </span>
             </Link>
 
@@ -169,7 +175,7 @@ export function Layout({ onOpenPalette }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-500 dark:text-slate-400">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
-              Brookhaven AI Adoption Hub · Internal use only · Built with Claude
+              BrookHaven AI Integrations Hub · Internal use only · Built with Claude
             </div>
             <div className="text-xs">
               Got a tutorial idea? Drop it in the #ai-adoption Telegram channel.

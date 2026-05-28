@@ -112,7 +112,7 @@ export function CoworkIndex() {
       {/* Supported connectors */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-50 mb-1">
-          Connectors we use at Brookhaven
+          Connectors we use at BrookHaven
         </h2>
         <p className="text-sm text-slate-600 dark:text-slate-400 mb-5 max-w-2xl">
           Each connector links Claude to one of our work tools. Click any to
@@ -155,7 +155,7 @@ export function CoworkIndex() {
             </h2>
             <p className="text-sm text-slate-600 dark:text-slate-400 mt-1.5 max-w-2xl">
               Each tutorial walks you through authorizing a connector and
-              wiring it into a real Brookhaven workflow.
+              wiring it into a real BrookHaven workflow.
             </p>
           </div>
           <span className="text-sm text-slate-500 dark:text-slate-400">
@@ -197,7 +197,7 @@ export function CoworkIndex() {
           </div>
           <div className="text-slate-700 dark:text-slate-300 leading-relaxed space-y-3 ml-13">
             <p>
-              The single most-cited warning in the Brookhaven coworker survey:
+              The single most-cited warning in the BrookHaven coworker survey:
               automation can run silently with wrong output. The ILIT board did
               this — Monday automations were "working" but client documents
               had the wrong fields filled in. The backstop (manually checking

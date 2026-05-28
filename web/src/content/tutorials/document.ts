@@ -35,7 +35,7 @@ This context makes every review dramatically sharper.`,
     {
       title: "Write the custom instructions",
       body: `Paste this as the Project's custom instructions:`,
-      prompt: `You're a legal review assistant for the Brookhaven Legal Operations team. You review trust documents, wills, POAs, and other estate planning instruments.
+      prompt: `You're a legal review assistant for the BrookHaven Legal Operations team. You review trust documents, wills, POAs, and other estate planning instruments.
 
 When I share a document, produce this structured output:
 
@@ -150,12 +150,12 @@ export const contractRedline: Tutorial = {
       title: "Set up a 'Contract redline' Project",
       body: `Open Claude.ai → Projects → +New Project. Name: *"Contract redline."*
 
-Upload your firm's standard MSA, NDA, and service agreement templates to Project knowledge. Tag each with a comment like "BH standard MSA - approved Jan 2026."`,
+Upload your firm's standard MSA, NDA, and service agreement templates to Project knowledge. Tag each with a comment like "BrookHaven standard MSA - approved Jan 2026."`,
     },
     {
       title: "Custom instructions for the Project",
       body: `Paste this:`,
-      prompt: `You compare incoming contracts to Brookhaven's standard templates and produce a redline analysis.
+      prompt: `You compare incoming contracts to BrookHaven's standard templates and produce a redline analysis.
 
 When I share an incoming contract, identify which standard template it should be compared against (MSA, NDA, service agreement, engagement letter), then produce:
 
@@ -165,7 +165,7 @@ Output a table:
 | Section / Topic | Incoming contract says | Our standard says | Why this matters | Risk level |
 
 Risk levels:
-- 🔴 **HIGH** — material risk to BH (uncapped liability, broad indemnification against us, perpetual confidentiality on counterparty's data but not ours, IP assignment of our work to them)
+- 🔴 **HIGH** — material risk to BrookHaven (uncapped liability, broad indemnification against us, perpetual confidentiality on counterparty's data but not ours, IP assignment of our work to them)
 - 🟡 **MEDIUM** — meaningful change but not catastrophic (different payment terms, different termination notice, narrower limitations of liability)
 - 🟢 **LOW** — minor (different governing law clause when both are commercially reasonable, defined-term variations, formatting)
 
@@ -285,7 +285,7 @@ If client has K-1s, I need each one.
 **C. Optional but recommended** (e.g., "I see investment income — confirm if any cost-basis adjustments are needed")
 **D. Inconsistencies** — flag anything that doesn't add up (e.g., "you submitted a W-2 for $80k but your prior year showed self-employment income — clarify employment status this year")
 
-After the output, draft a follow-up email to the client requesting only the missing items in part B. Friendly tone. Bullet list of asks. Brookhaven voice.`,
+After the output, draft a follow-up email to the client requesting only the missing items in part B. Friendly tone. Bullet list of asks. BrookHaven voice.`,
     },
     {
       title: "Drop the source docs in and run",
@@ -313,7 +313,7 @@ Use this to update your engagement letter or the initial "please submit these do
     },
   ],
   pitfalls: [
-    "Sending Claude's draft follow-up email without personalizing it. The whole 'BH voice' point is to NOT sound generic.",
+    "Sending Claude's draft follow-up email without personalizing it. The whole 'BrookHaven voice' point is to NOT sound generic.",
     "Trusting Claude's inventory without a spot-check. A misclassified 1099 can cost a return amendment.",
     "Letting the Project knowledge go stale. When tax law changes (new forms, new requirements), update the checklist.",
   ],
