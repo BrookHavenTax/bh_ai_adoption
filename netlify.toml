@@ -1,0 +1,57 @@
+# Netlify config for the BH AI Adoption Hub
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # The site lives in the /web subfolder of this repo.
+  base = "web"
+  # tsc -b && vite build — see web/package.json
+  command = "npm run build"
+  # Relative to `base`, so this is web/dist
+  publish = "dist"
+
+[build.environment]
+  # Pin Node so builds are deterministic across machines and over time.
+  NODE_VERSION = "22"
+  # Avoid noisy logs; npm install fails fast on real problems.
+  NPM_CONFIG_LOGLEVEL = "warn"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SPA fallback: every unmatched path serves index.html so React Router can
+# render the right route client-side. Without this, refreshing on /tutorials
+# returns a 404.
+# ─────────────────────────────────────────────────────────────────────────────
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Asset caching: hashed Vite outputs (/assets/*) can be cached aggressively
+# since their filenames change on every build. index.html must NOT be cached
+# so coworkers always get the latest after a deploy.
+# ─────────────────────────────────────────────────────────────────────────────
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Sensible security headers for an internal docs site.
+# ─────────────────────────────────────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

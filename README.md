@@ -16,7 +16,10 @@ bh_ai_adoption/
 │   │   └── test/               # Vitest + RTL tests
 │   ├── package.json
 │   └── ...
-├── deploy.md                   # how to deploy to AWS EC2
+├── netlify.toml                # Netlify config (recommended free deploy)
+├── deploy-netlify.md           # Netlify deploy walkthrough
+├── deploy.md                   # AWS EC2 + nginx deploy walkthrough (alternative)
+├── deploy.sh                   # EC2 convenience deploy script
 └── README.md                   # this file
 ```
 
@@ -41,15 +44,14 @@ npm run preview   # serve dist/ at http://localhost:4173 for smoke testing
 
 ## Deploying
 
-See [`deploy.md`](./deploy.md) for the full AWS EC2 + nginx walkthrough, plus the `deploy.sh` convenience script.
+**Recommended: Netlify (free).** Auto-deploys on every `git push` to `main`. ~10 minute one-time setup. See [`deploy-netlify.md`](./deploy-netlify.md) for the walkthrough.
 
-Steady-state cycle:
+Once Netlify is connected, the steady-state cycle is just:
 ```bash
-cd web/
-npm run test && npm run build
-rsync -avz --delete -e "ssh -i ~/.ssh/bh-hub.pem" \
-  ./dist/ ubuntu@<EC2_IP>:/var/www/bh-ai-adoption-hub/
+git push origin main   # Netlify builds + deploys automatically
 ```
+
+**Alternative: AWS EC2 + nginx.** See [`deploy.md`](./deploy.md). Use this if you need self-hosted control or want the hub behind a VPN. ~$15/mo.
 
 ## Content model
 
@@ -58,7 +60,7 @@ Everything on the site is driven by typed content in `web/src/content/`:
 - `roles.ts` — 8 anonymized BH roles (Client Resource Specialist, Tax Lead, etc.) with their pain points and recommended tutorials
 - `themes.ts` — 8 pain themes that came out of the survey
 - `tools.ts` — per-tool playbooks (Outlook, Telegram, Dropbox, Adobe PDF, Monday, Teams, QBO)
-- `tutorials/` — 18 detailed tutorials with steps, copyable prompts, callouts, and cross-links
+- `tutorials/` — 32 detailed tutorials with steps, copyable prompts, callouts, and cross-links (8 of which are Claude Skills, 5 are Claude Cowork workflows)
 
 All cross-references are integrity-tested — `npm run test` fails if a role references a missing tutorial slug.
 
