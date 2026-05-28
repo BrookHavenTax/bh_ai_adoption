@@ -1,0 +1,96 @@
+name: Monthly Newsletter
+
+# Generates the BH Monthly newsletter on the 1st of each month at 12:00 UTC
+# (7am Atlanta time), commits the new content/newsletter/YYYY-MM.ts file, and
+# pushes — Netlify auto-deploys within ~2 minutes.
+#
+# Required secret:
+#   ANTHROPIC_API_KEY — set in Settings → Secrets and variables → Actions
+#
+# Can also be run manually from the Actions tab via the "Run workflow" button
+# (workflow_dispatch). Optionally pass a specific month.
+
+on:
+  schedule:
+    # 12:00 UTC on the 1st of each month
+    - cron: "0 12 1 * *"
+  workflow_dispatch:
+    inputs:
+      month:
+        description: "Month to generate (YYYY-MM). Leave blank for current month."
+        required: false
+        default: ""
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install scripts dependencies
+        working-directory: scripts
+        run: npm ci || npm install
+
+      - name: Compute month
+        id: month
+        run: |
+          if [ -n "${{ github.event.inputs.month }}" ]; then
+            MONTH="${{ github.event.inputs.month }}"
+          else
+            MONTH=$(date -u +%Y-%m)
+          fi
+          echo "month=$MONTH" >> "$GITHUB_OUTPUT"
+          echo "Generating newsletter for $MONTH"
+
+      - name: Generate newsletter issue
+        working-directory: scripts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY secret is not set. Add it in Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          npx tsx generate-newsletter.ts --month=${{ steps.month.outputs.month }}
+
+      - name: Commit and push
+        run: |
+          git config user.name "BH Newsletter Bot"
+          git config user.email "bot@brookhaventax.local"
+
+          MONTH="${{ steps.month.outputs.month }}"
+          FILE="web/src/content/newsletter/${MONTH}.ts"
+          INDEX="web/src/content/newsletter/index.ts"
+
+          if [ ! -f "$FILE" ]; then
+            echo "::error::Expected newsletter file $FILE was not produced."
+            exit 1
+          fi
+
+          git add "$FILE" "$INDEX"
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          MONTH_LABEL=$(date -u -d "${MONTH}-01" +"%B %Y" 2>/dev/null || date -u -j -f "%Y-%m-%d" "${MONTH}-01" +"%B %Y")
+          git commit -m "Newsletter: ${MONTH_LABEL} issue (auto-generated)"
+          git push origin main
+
+      - name: Summary
+        run: |
+          echo "### 📰 Newsletter generated" >> $GITHUB_STEP_SUMMARY
+          echo "Month: ${{ steps.month.outputs.month }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Netlify should pick up the push and deploy within ~2 minutes." >> $GITHUB_STEP_SUMMARY

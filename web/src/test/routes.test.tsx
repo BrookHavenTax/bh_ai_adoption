@@ -123,6 +123,41 @@ describe("Routing — top-level pages render", () => {
     expect(screen.getByTestId("nav-skills")).toBeInTheDocument();
     expect(screen.getByTestId("nav-cowork")).toBeInTheDocument();
   });
+
+  it("newsletter index renders with latest issue CTA", () => {
+    renderWithRouter(<App />, { initialEntries: ["/newsletter"] });
+    expect(
+      screen.getByRole("heading", {
+        name: /Tax \+ AI updates, in digestible bites/i,
+        level: 1,
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId("newsletter-latest-cta")).toBeInTheDocument();
+  });
+
+  it("newsletter detail renders both sections", () => {
+    renderWithRouter(<App />, { initialEntries: ["/newsletter/2026-06"] });
+    expect(
+      screen.getByRole("heading", {
+        name: /Tax \+ AI updates for June 2026/i,
+        level: 1,
+      }),
+    ).toBeInTheDocument();
+    // Both section headers present
+    expect(
+      screen.getByRole("heading", { name: /Tax legislation/i, level: 2 }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /AI tools.*Claude updates/i, level: 2 }),
+    ).toBeInTheDocument();
+  });
+
+  it("newsletter detail handles missing month", () => {
+    renderWithRouter(<App />, { initialEntries: ["/newsletter/2099-99"] });
+    expect(
+      screen.getByRole("heading", { name: /Newsletter issue not found/i, level: 1 }),
+    ).toBeInTheDocument();
+  });
 });
 
 describe("Detail pages", () => {

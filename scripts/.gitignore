@@ -1,0 +1,4 @@
+node_modules/
+narration-output/
+.env
+*.log

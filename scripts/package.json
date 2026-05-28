@@ -1,0 +1,23 @@
+{
+  "name": "bh-ai-adoption-scripts",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Generator scripts: narration audio + monthly newsletter.",
+  "scripts": {
+    "narration:scripts": "tsx generate-narration.ts",
+    "narration:audio": "tsx render-audio.ts",
+    "narration:all": "npm run narration:scripts && npm run narration:audio",
+    "newsletter": "tsx generate-newsletter.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "openai": "^4.79.0",
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

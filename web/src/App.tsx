@@ -8,6 +8,7 @@ import { ToolsIndex, ToolDetail } from "./routes/Tools";
 import { TutorialsIndex, TutorialDetail } from "./routes/Tutorials";
 import { SkillsIndex } from "./routes/Skills";
 import { CoworkIndex } from "./routes/Cowork";
+import { NewsletterIndex, NewsletterDetail } from "./routes/Newsletter";
 import { About } from "./routes/About";
 import { NotFound } from "./routes/NotFound";
 import { CommandPalette } from "./components/CommandPalette";
@@ -46,6 +47,8 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/skills" element={<SkillsIndex />} />
           <Route path="/cowork" element={<CoworkIndex />} />
+          <Route path="/newsletter" element={<NewsletterIndex />} />
+          <Route path="/newsletter/:month" element={<NewsletterDetail />} />
           <Route path="/themes" element={<ThemesIndex />} />
           <Route path="/themes/:themeId" element={<ThemeDetail />} />
           <Route path="/roles" element={<RolesIndex />} />

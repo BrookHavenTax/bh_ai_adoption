@@ -19,6 +19,7 @@ import {
   X,
   GraduationCap,
   Plug,
+  FileText,
 } from "lucide-react";
 import {
   roles,
@@ -69,6 +70,15 @@ function buildIndex(): Command[] {
     to: "/cowork",
     group: "Pages",
     keywords: "cowork connector connectors mcp outlook qbo monday dropbox integration",
+  });
+  cmds.push({
+    id: "newsletter",
+    title: "Newsletter",
+    subtitle: "Monthly tax legislation + AI tool updates",
+    icon: FileText,
+    to: "/newsletter",
+    group: "Pages",
+    keywords: "newsletter monthly tax legislation news updates ai tools",
   });
   cmds.push({
     id: "themes",

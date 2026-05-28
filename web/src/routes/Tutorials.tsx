@@ -29,6 +29,7 @@ import { Callout } from "@/components/Callout";
 import { StepList, stepAnchorId } from "@/components/StepList";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { TableOfContents, type TocEntry } from "@/components/TableOfContents";
+import { AudioPlayer } from "@/components/AudioPlayer";
 import { useRecentlyViewed } from "@/lib/useRecentlyViewed";
 import { useTutorialProgress } from "@/lib/useTutorialProgress";
 import { useToast } from "@/lib/toast";
@@ -396,6 +397,13 @@ export function TutorialDetail() {
               </Badge>
             ))}
           </div>
+
+          {/* Audio narration (when available) */}
+          {tutorial.audioUrl && (
+            <div className="mt-6">
+              <AudioPlayer src={tutorial.audioUrl} />
+            </div>
+          )}
 
           {/* Progress meter */}
           {totalSteps > 0 && (

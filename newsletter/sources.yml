@@ -1,0 +1,119 @@
+# Sources for the BH Monthly newsletter generator.
+#
+# Each entry: a human-readable name, the URL to fetch, and an optional priority.
+# The generator (scripts/generate-newsletter.ts) fetches each URL, extracts
+# visible text, and feeds the bundle to Claude with instructions to identify
+# the relevant items for each section.
+#
+# Add new sources here — no code change required.
+# Remove sources by deleting their entry.
+
+# ─────────────────────────────────────────────────────────────────────────
+# Section 1 — Tax legislation (primary focus)
+# ─────────────────────────────────────────────────────────────────────────
+tax_legislation:
+  # Federal — primary regulators and lawmakers
+  - name: IRS Newsroom
+    url: https://www.irs.gov/newsroom
+    priority: high
+  - name: U.S. Treasury — Press Releases
+    url: https://home.treasury.gov/news/press-releases
+    priority: high
+  - name: Congress.gov — recent tax legislation
+    url: https://www.congress.gov/quick-search/legislation?wordsPhrases=tax+income
+    priority: high
+  - name: FinCEN news (BOI / CTA tracking)
+    url: https://www.fincen.gov/news-releases
+    priority: medium
+
+  # Federal — analysis / coverage
+  - name: Tax Foundation — blog
+    url: https://taxfoundation.org/blog/
+    priority: high
+  - name: Tax Policy Center
+    url: https://www.taxpolicycenter.org/feature
+    priority: medium
+  - name: Journal of Accountancy — tax
+    url: https://www.journalofaccountancy.com/news/tax
+    priority: medium
+
+  # State — Georgia (BH's primary state)
+  - name: Georgia Department of Revenue — News
+    url: https://dor.georgia.gov/press-releases
+    priority: high
+  - name: Georgia General Assembly — recent bills
+    url: https://www.legis.ga.gov/legislation
+    priority: medium
+
+  # Wealth & estate planning context (UHNW lens)
+  - name: ThinkAdvisor — Estate Planning
+    url: https://www.thinkadvisor.com/category/estate-planning/
+    priority: medium
+
+# ─────────────────────────────────────────────────────────────────────────
+# Section 2 — AI tools (secondary focus)
+# ─────────────────────────────────────────────────────────────────────────
+ai_tools:
+  # Anthropic — first priority since most BH tutorials are Claude-based
+  - name: Anthropic News
+    url: https://www.anthropic.com/news
+    priority: high
+  - name: Anthropic Engineering blog
+    url: https://www.anthropic.com/engineering
+    priority: medium
+  - name: Claude release notes
+    url: https://docs.claude.com/en/release-notes/overview
+    priority: high
+
+  # Microsoft 365 / Office (we use Outlook + Teams + Excel + OneDrive)
+  - name: Microsoft 365 Blog
+    url: https://www.microsoft.com/en-us/microsoft-365/blog/
+    priority: medium
+
+  # BH-specific tools — Monday, Dropbox, QBO
+  - name: Monday.com — Product updates
+    url: https://monday.com/blog/news/
+    priority: low
+  - name: Dropbox newsroom
+    url: https://blog.dropbox.com/
+    priority: low
+  - name: Intuit QuickBooks — News
+    url: https://quickbooks.intuit.com/r/news/
+    priority: low
+
+# ─────────────────────────────────────────────────────────────────────────
+# Filtering hints (passed to the generator as guidance — not enforced)
+# ─────────────────────────────────────────────────────────────────────────
+filters:
+  # Items must be from within this window (days back from generation date)
+  lookback_days: 35
+  # Skip items whose summaries contain these terms (case-insensitive)
+  exclude_terms:
+    - "press contact"
+    - "media inquiry"
+    - "available for interview"
+  # Topics we deeply care about (gets weighted higher in selection)
+  prioritize_topics:
+    - "TCJA"
+    - "SALT cap"
+    - "estate tax"
+    - "estate exemption"
+    - "gift tax"
+    - "Corporate Transparency Act"
+    - "beneficial ownership"
+    - "199A"
+    - "passthrough"
+    - "trust"
+    - "fiduciary"
+    - "Georgia"
+    - "GA tax"
+    - "1099"
+    - "Section 1031"
+    - "Section 754"
+    - "Roth conversion"
+    - "RMD"
+    - "Secure Act"
+    - "Claude"
+    - "MCP"
+    - "Cowork"
+    - "Skills"

@@ -16,6 +16,9 @@ bh_ai_adoption/
 │   │   └── test/               # Vitest + RTL tests
 │   ├── package.json
 │   └── ...
+├── scripts/                    # Node.js generators (narration audio + newsletter)
+├── newsletter/                 # sources.yml + newsletter README
+├── .github/workflows/          # monthly newsletter cron
 ├── netlify.toml                # Netlify config (recommended free deploy)
 ├── deploy-netlify.md           # Netlify deploy walkthrough
 ├── deploy.md                   # AWS EC2 + nginx deploy walkthrough (alternative)
@@ -23,12 +26,11 @@ bh_ai_adoption/
 └── README.md                   # this file
 ```
 
-## Two-part feature
+## What's in here
 
-This project rolls out in two coupled parts (both designed around the same anonymized survey data):
-
-1. **The AI Adoption Hub (this site)** — a React/TypeScript static site with role-, theme-, and tool-mapped tutorials. Lives in `web/`. Deployable to any static host (we're going with AWS EC2 + nginx — see `deploy.md`).
-2. **The weekly newsletter** *(not yet built)* — a scheduled job that produces 3 artifacts each Monday: an email newsletter, a Telegram channel post, and a 5-10 slide deck for the weekly meeting. Scaffolding for this will live alongside the site (`newsletter/`, `scripts/`).
+1. **The AI Adoption Hub site (`web/`)** — React/TypeScript, 32 tutorials, dedicated Skills + Cowork sections, dark mode, command palette, step progress tracking, full search.
+2. **Tutorial audio narration (`scripts/`)** — script + MP3 generators that produce voiceover audio for each tutorial. Run-once setup; outputs live in `web/public/audio/`. Audio player appears automatically on tutorials that have an MP3.
+3. **Monthly newsletter (`newsletter/` + `web/src/content/newsletter/`)** — auto-generated 1st of every month via GitHub Actions. Two sections: tax legislation (primary) + AI tools (secondary). See [`newsletter/README.md`](./newsletter/README.md).
 
 ## Working on the site
 
@@ -61,6 +63,7 @@ Everything on the site is driven by typed content in `web/src/content/`:
 - `themes.ts` — 8 pain themes that came out of the survey
 - `tools.ts` — per-tool playbooks (Outlook, Telegram, Dropbox, Adobe PDF, Monday, Teams, QBO)
 - `tutorials/` — 32 detailed tutorials with steps, copyable prompts, callouts, and cross-links (8 of which are Claude Skills, 5 are Claude Cowork workflows)
+- `newsletter/` — monthly newsletter issues (one TS file per month, e.g. `2026-06.ts`)
 
 All cross-references are integrity-tested — `npm run test` fails if a role references a missing tutorial slug.
 
@@ -72,6 +75,32 @@ The survey contains real coworker names. Names have been stripped from `analysis
 
 Friendly, casual, light emoji ok. The audience is BH coworkers across mixed technical comfort — plain language wins.
 
+## Audio narration
+
+The site supports per-tutorial audio narration. Generators live in `scripts/`:
+
+```bash
+cd scripts
+npm install
+ANTHROPIC_API_KEY=sk-ant-... npm run narration:scripts   # Claude writes the scripts
+OPENAI_API_KEY=sk-... npm run narration:audio            # OpenAI TTS renders MP3s
+```
+
+Then add `audioUrl: "/audio/your-tutorial-slug.mp3"` to each tutorial that has audio. See [`scripts/README.md`](./scripts/README.md) for details.
+
+## Monthly newsletter
+
+Auto-generates on the 1st of each month via GitHub Actions. Set the `ANTHROPIC_API_KEY` repo secret once and the cron handles the rest. Manual run:
+
+```bash
+cd scripts
+ANTHROPIC_API_KEY=sk-ant-... npm run newsletter
+```
+
+See [`newsletter/README.md`](./newsletter/README.md).
+
 ## See also
 
 - `analysis/coworker-pain-points-2026-05-27.md` — the synthesized pain-point analysis that drives all the content
+- `newsletter/README.md` — newsletter pipeline + GitHub Actions setup
+- `scripts/README.md` — narration script + audio rendering pipeline

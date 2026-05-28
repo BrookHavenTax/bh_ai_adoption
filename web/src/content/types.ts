@@ -80,4 +80,10 @@ export interface Tutorial {
   steps: TutorialStep[];
   pitfalls: string[];
   relatedTutorialSlugs: string[];
+  /**
+   * Path to an MP3 narration of this tutorial, served from /public/audio/.
+   * Optional — when present, an audio player appears at the top of the
+   * tutorial. Produced by scripts/scripts-to-audio.py (see /scripts/README).
+   */
+  audioUrl?: string;
 }

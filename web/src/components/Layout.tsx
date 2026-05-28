@@ -7,9 +7,9 @@ const navItems = [
   { to: "/", label: "Home", end: true, highlight: false },
   { to: "/skills", label: "Skills", end: false, highlight: true },
   { to: "/cowork", label: "Cowork", end: false, highlight: true },
-  { to: "/tutorials", label: "All tutorials", end: false, highlight: false },
+  { to: "/newsletter", label: "Newsletter", end: false, highlight: false },
+  { to: "/tutorials", label: "Tutorials", end: false, highlight: false },
   { to: "/roles", label: "Roles", end: false, highlight: false },
-  { to: "/themes", label: "Themes", end: false, highlight: false },
   { to: "/tools", label: "Tools", end: false, highlight: false },
   { to: "/about", label: "About", end: false, highlight: false },
 ];
