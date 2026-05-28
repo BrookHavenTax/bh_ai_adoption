@@ -1,114 +1,128 @@
 import type { NewsletterIssue } from "./types";
 
 /**
- * SAMPLE FIRST ISSUE.
+ * BH Monthly — June 2026.
  *
- * Hand-curated to demonstrate the format and tone. Future issues will be
- * auto-generated each month by the script at /scripts/generate-newsletter.ts
- * and committed by GitHub Actions on the 1st of each month.
+ * Web-researched and assembled in-session (hybrid authorship). All items
+ * link to primary or reputable secondary sources — verify against the
+ * source before relying on any specific figure. Future issues are produced
+ * the same way on a monthly cadence.
  *
- * The content below is illustrative — the items reference real ongoing
- * discussions (TCJA expiration, SALT cap, CTA enforcement, GA flat-tax
- * reductions) but the specific dollar figures and statuses are placeholder
- * — verify against primary sources before relying on any of it.
+ * Research date: 2026-05-28.
  */
 
 export const june2026: NewsletterIssue = {
   month: "2026-06",
   monthLabel: "June 2026",
   publishedDate: "2026-06-01",
-  authorship: "hand-curated",
-  intro: `Welcome to the first **BH Monthly** — a digestible-bites roundup of what's moving in tax legislation and (secondarily) what's new in AI tooling relevant to our work.
+  authorship: "hybrid",
+  intro: `Welcome to **BH Monthly**. The headline this month is one big correction to a story we've been bracing for: **the TCJA "cliff" is gone.** The One Big Beautiful Bill Act (signed July 2025) made most of the 2017 tax cuts permanent — so the planning math we'd been running for a 2026 sunset no longer applies. The estate exemption actually went *up*, not down.
 
-The format is simple: each item is one paragraph plain English, what it means for our clients, and a link to the primary source. Skim it in 90 seconds. Read deeper on anything that looks like it'll hit your desk.`,
+Closer to home, **Georgia signed HB 463 on May 11** — a faster rate cut plus new tips/overtime relief. And on the AI side, **Claude for Small Business launched May 13** with a Monthly Close workflow that maps almost exactly to what Will does across our entities. Details below — skim in 90 seconds, dig in where it touches your desk.`,
 
   taxLegislation: [
     {
-      title: "TCJA individual provisions still set to expire end of 2025",
+      title: "OBBBA made most TCJA provisions permanent — the 2026 cliff is gone",
       summary:
-        "Most individual tax cuts from the 2017 Tax Cuts and Jobs Act sunset on December 31, 2025 unless Congress acts. That includes the lower marginal rates, the expanded standard deduction, the larger estate/gift exemption, and the 199A passthrough deduction. Both chambers have introduced extension bills with notable differences; reconciliation is the most-likely path but timing is uncertain.",
-      status: "Proposed bill",
+        "The One Big Beautiful Bill Act (P.L. 119-21), signed July 4, 2025, permanently extended most of the individual provisions from the 2017 Tax Cuts and Jobs Act that had been scheduled to sunset after 2025. That includes the seven-bracket rate structure (no rate increase for 2026), the higher standard deduction, the 20% Section 199A passthrough deduction, and the doubled estate/gift exemption. It also added several new provisions.",
+      status: "Signed into law",
       scope: "Federal",
       whatItMeans:
-        "Plan estate-doc reviews now for clients with estates approaching the current ~$13.6M exemption — that figure could drop to roughly half if nothing passes. For middle-bracket clients, rate brackets revert to pre-TCJA percentages, which raises ordinary-income tax for most BH clients.",
+        "Any client planning built around a 2026 TCJA sunset needs to be re-run. Lower brackets, the 199A deduction, and the large estate exemption are now the baseline — not a temporary window closing. This is the single biggest planning update of the year; flag it for any client we told to act 'before the 2025 cliff.'",
       affectsBrackets: ["Middle class", "High net worth", "Ultra high net worth"],
       impact: "high",
       sources: [
         {
-          label: "Congress.gov bill tracker",
-          url: "https://www.congress.gov/",
+          label: "Congress.gov — TCJA expiring provisions reference (CRS)",
+          url: "https://www.congress.gov/crs-product/R47846",
         },
         {
-          label: "Tax Foundation analysis",
-          url: "https://taxfoundation.org/",
+          label: "RSM — Congress passes TCJA-extension tax bill",
+          url: "https://rsmus.com/insights/services/business-tax/big-beautiful-bill-tax.html",
         },
       ],
     },
     {
-      title: "SALT cap renegotiation — multiple proposals on the table",
+      title: "Estate & gift exemption rises to $15M per individual for 2026",
       summary:
-        "The $10,000 cap on state and local tax deductions is one of the most-debated TCJA expiring provisions. Proposals range from full repeal (favored in high-tax-state delegations) to raising the cap to $20K (the House compromise floated this spring) to letting it sunset entirely. No consensus yet.",
-      status: "Committee markup",
-      scope: "Federal",
-      whatItMeans:
-        "Most BH clients in GA aren't capped today, but our clients with significant property in high-property-tax counties or multi-state residences are. Worth flagging in current-year planning conversations even though the rule won't change for 2026 filings.",
-      affectsBrackets: ["High net worth", "Ultra high net worth"],
-      impact: "medium",
-      sources: [
-        {
-          label: "Tax Policy Center",
-          url: "https://www.taxpolicycenter.org/",
-        },
-      ],
-    },
-    {
-      title: "BOI / Corporate Transparency Act reporting — enforcement still in flux",
-      summary:
-        "The Corporate Transparency Act's beneficial ownership reporting requirement has gone through multiple court injunctions and partial stays. Current state: enforcement is paused for most domestic entities pending further legal resolution, but the reporting framework remains on the books and FinCEN's portal is operational.",
-      status: "Court / regulatory action",
-      scope: "Federal",
-      whatItMeans:
-        "Continue tracking which BH-managed entities would have a reporting obligation if enforcement resumes. Don't let clients assume the requirement is permanently dead — the framework still exists and could re-activate on short notice.",
-      affectsBrackets: ["High net worth", "Ultra high net worth"],
-      impact: "medium",
-      sources: [
-        {
-          label: "FinCEN BOI page",
-          url: "https://www.fincen.gov/boi",
-        },
-      ],
-    },
-    {
-      title: "Georgia flat income tax rate dropped to 5.39% effective January 2026",
-      summary:
-        "Georgia's scheduled flat-tax reductions continued in January 2026 with the rate dropping from 5.49% to 5.39%. The state is on a glide path to 4.99% by 2029, contingent on revenue triggers.",
+        "Rather than dropping toward roughly $7M as a TCJA sunset would have forced, the basic exclusion amount increased to $15 million per individual for decedents dying (and gifts made) in 2026, up from about $13.99 million for 2025. The exemption is now on a permanent, inflation-indexed footing under OBBBA.",
       status: "Effective",
+      scope: "Federal",
+      whatItMeans:
+        "Direct impact on our estate and trust work. Clients we rushed toward gifting strategies ahead of a feared 2025 reduction now have more room and less time pressure. Worth a proactive review of ILIT funding and Crummey-letter cadence against the higher number — and a reassuring note to clients who were anxious about the cliff.",
+      affectsBrackets: ["High net worth", "Ultra high net worth"],
+      impact: "high",
+      sources: [
+        {
+          label: "IRS — 2026 inflation adjustments (incl. OBBBA amendments)",
+          url: "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill",
+        },
+      ],
+    },
+    {
+      title: "Georgia HB 463 cuts the rate to 4.99% and adds tips/overtime relief",
+      summary:
+        "Governor Kemp signed HB 463 on May 11, 2026. It lowers Georgia's flat income tax rate to 4.99% effective January 1, 2026, sets up annual 0.125-point reductions starting in 2027 on a glide path toward 3.99%, and raises the standard deduction over time (single $12K to $15K in 2027; MFJ $24K to $30K). It also exempts up to $1,750 of tips and overtime pay from state tax from January 2026 through the end of 2028, and bumps the dependent deduction from $4,000 toward $6,000.",
+      status: "Signed into law",
       scope: "GA state",
       whatItMeans:
-        "Modest reduction for all GA-resident clients. Update tax projections going forward. The bigger story is the 2029 target — worth modeling for long-range planning.",
+        "Update GA projections for every Georgia-resident client now — the rate is already in effect for 2026. The tips/overtime exclusion is a new line to capture for clients with service-industry or hourly income in the family. The multi-year glide path is worth modeling into long-range plans for our higher-income GA clients.",
       affectsBrackets: ["Middle class", "High net worth", "Ultra high net worth"],
-      impact: "low",
+      impact: "medium",
       sources: [
         {
-          label: "GA Department of Revenue",
-          url: "https://dor.georgia.gov/",
+          label: "Office of the Governor — Kemp signs HB 463",
+          url: "https://gov.georgia.gov/press-releases/2026-05-11/gov-kemp-signs-legislation-lowering-taxes-and-supporting-economic-growth",
+        },
+        {
+          label: "Wilson Lewis — Georgia Sine Die 2026 summary",
+          url: "https://www.wilsonlewis.com/georgia-sine-die-2026-income-tax-cuts-and-targeted-relief/",
         },
       ],
     },
     {
-      title: "IRS announces 2026 inflation adjustments for retirement contributions",
+      title: "2026 IRS inflation adjustments: retirement limits and senior deduction up",
       summary:
-        "Annual inflation-adjusted contribution limits for 401(k), IRA, and HSA accounts were released by the IRS in late Q4 2025 and apply to the 2026 tax year. 401(k) employee deferral limit rose modestly. Catch-up contribution rules for those 50+ remain at current levels.",
+        "The IRS released the 2026 inflation adjustments (reflecting OBBBA). 401(k)/403(b)/457 employee deferral limit rises to $24,500 with a $8,000 catch-up for those 50+; IRA limit to $7,500 with a $1,100 catch-up. A new enhanced senior deduction provides up to $6,000 (individual) or $12,000 (joint) for taxpayers 65+. The employer-provided childcare credit cap jumped from $150K to $500K ($600K for eligible small businesses). Standard deduction for 2026 is $32,200 MFJ / $16,100 single.",
       status: "Effective",
       scope: "Federal",
       whatItMeans:
-        "Update client planning documents and engagement worksheets with the new limits. Especially relevant for UHNW clients doing year-end Roth conversions or high earners maxing 401(k) + catch-up.",
+        "Refresh planning worksheets and engagement checklists with the new limits before next season. The enhanced senior deduction is worth surfacing to our older clients in year-end conversations. The expanded employer childcare credit could matter for our business-owner clients.",
       affectsBrackets: ["Middle class", "High net worth", "Ultra high net worth"],
       impact: "informational",
       sources: [
         {
-          label: "IRS Newsroom",
-          url: "https://www.irs.gov/newsroom",
+          label: "IRS — 2026 inflation adjustments",
+          url: "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill",
+        },
+        {
+          label: "IRS — One, Big, Beautiful Bill provisions",
+          url: "https://www.irs.gov/newsroom/one-big-beautiful-bill-provisions",
+        },
+      ],
+    },
+    {
+      title: "CTA/BOI: domestic entities exempt, but the framework held up in court",
+      summary:
+        "FinCEN's March 2025 interim final rule exempts U.S.-created entities and U.S. persons from beneficial ownership reporting — only certain foreign reporting companies must file. Then on December 16, 2025, the Eleventh Circuit ruled the Corporate Transparency Act constitutional, so the framework remains valid and FinCEN is expected to issue a final rule in 2026. Separately, states are moving on their own: New York's LLC Transparency Act took effect January 1, 2026, and California is advancing its version.",
+      status: "Court / regulatory action",
+      scope: "Federal + multi-state",
+      whatItMeans:
+        "Our clients' domestic LLCs and entities are currently off the hook for federal BOI filing — but don't tell clients it's permanently dead. The court upheld the law and a final rule is expected. The bigger near-term watch item is state-level transparency acts: any client with a New York entity already has a 2026 obligation. Keep an entity-by-entity tracker.",
+      affectsBrackets: ["High net worth", "Ultra high net worth"],
+      impact: "medium",
+      sources: [
+        {
+          label: "FinCEN — Beneficial Ownership Information",
+          url: "https://www.fincen.gov/boi",
+        },
+        {
+          label: "Treasury — suspension of CTA enforcement vs. domestic companies",
+          url: "https://home.treasury.gov/news/press-releases/sb0038",
+        },
+        {
+          label: "Greenberg Traurig — 11th Circuit declares CTA constitutional",
+          url: "https://www.gtlaw.com/en/insights/2026/1/cta-update-eleventh-circuit-declares-cta-constitutional-beneficial-ownership-reporting-requirements-remain-unchanged",
         },
       ],
     },
@@ -116,34 +130,52 @@ The format is simple: each item is one paragraph plain English, what it means fo
 
   aiTools: [
     {
-      title: "Anthropic releases Claude with extended context window",
+      title: "Claude for Small Business launches with a Monthly Close workflow",
       summary:
-        "Claude's context window expanded substantially in a recent release, allowing much longer documents (entire trust deeds, full client files) to be processed in a single conversation. The pricing model adjusts for very-long-context queries.",
+        "Anthropic launched Claude for Small Business on May 13, 2026 — a packaged set of connectors plus 15 ready-to-run agentic workflows that put Claude inside QuickBooks, PayPal, HubSpot, Canva, DocuSign, Google Workspace, and Microsoft 365. Standout workflows: a Monthly Close that reconciles books against settlements, flags discrepancies, writes a plain-English P&L, and produces a close packet to forward to an accountant; plus payroll planning, invoice chasing, margin analysis, contract review, and tax-season prep. Every workflow is owner-initiated and approval-based — nothing sends, posts, or pays without explicit sign-off.",
       whatItMeans:
-        "For estate doc reviews, this means dropping a 60+ page trust into Claude in one chat instead of splitting it. Worth a small re-test on the estate-doc-review workflow.",
-      impact: "medium",
+        "This is the most BH-relevant AI release in months. The Monthly Close workflow maps almost exactly to what Will runs across 11+ entities, and 'invoice chasing' overlaps our AR follow-up work. The approval-based model is exactly the human-in-the-loop pattern we already require. Worth a pilot on one entity to compare against our current QBO + Claude tutorials.",
+      impact: "high",
       sources: [
         {
-          label: "Anthropic news",
-          url: "https://www.anthropic.com/news",
+          label: "Anthropic — Introducing Claude for Small Business",
+          url: "https://www.anthropic.com/news/claude-for-small-business",
+        },
+        {
+          label: "Axios — Anthropic's new Claude Code tools for small businesses",
+          url: "https://www.axios.com/2026/05/13/anthropic-claude-small-business-smb",
         },
       ],
     },
     {
-      title: "QuickBooks Online MCP connector adds journal entry write access",
+      title: "Claude Managed Agents gain memory ('dreaming') and two more features",
       summary:
-        "Anthropic's QBO connector previously supported reads + most invoice/payment writes; the recent update adds direct journal entry creation. Still requires explicit per-call authorization in the Claude.ai UI.",
+        "Anthropic updated Claude Managed Agents with three new features, including 'dreaming' — agents review past sessions to find patterns and self-improve over time. This extends what a scheduled or recurring agent can do across runs.",
       whatItMeans:
-        "For Will's monthly close workflow, this could replace manual JE posting for recurring items (depreciation, intercompany). Still apply the read-only-first discipline before granting JE write access.",
-      impact: "medium",
+        "Relevant to the way we'd automate recurring work — e.g. our monthly newsletter routine, or a recurring close-prep agent. Memory across runs means a recurring agent gets better at our specific patterns instead of starting cold each time. Worth watching as we lean further into scheduled automations.",
+      impact: "low",
       sources: [
         {
-          label: "Claude Cowork connectors",
-          url: "https://www.anthropic.com/news",
+          label: "9to5Mac — Claude Managed Agents get three new features",
+          url: "https://9to5mac.com/2026/05/07/anthropic-updates-claude-managed-agents-with-three-new-features/",
+        },
+      ],
+    },
+    {
+      title: "Claude adds 28 security/compliance integrations; Claude Code limits doubled",
+      summary:
+        "Anthropic expanded enterprise governance with 28 new security and compliance platform integrations (part of the Project Glasswing push, with Claude Security now in public beta). Separately, the Claude Code five-hour usage limit was doubled for Pro, Max, and Enterprise customers.",
+      whatItMeans:
+        "The governance integrations matter if we ever formalize firm-wide AI policy — they make Claude more auditable inside a regulated environment, which is the kind of thing a tax/legal firm's compliance posture benefits from. The Code limit increase is minor for us unless someone's doing heavy automation buildout.",
+      impact: "low",
+      sources: [
+        {
+          label: "SecurityWeek — Anthropic expands Claude's enterprise security reach",
+          url: "https://www.securityweek.com/anthropic-expands-claudes-enterprise-security-reach-with-28-new-integrations/",
         },
       ],
     },
   ],
 
-  closing: `That's it for the first issue. Got something we should track or include next month? Drop it in the #ai-adoption Telegram channel.`,
+  closing: `That's June. The OBBBA permanence story is the one to internalize — it changes the framing for a lot of client conversations. Spotted something we should track next month? Drop it in the #ai-adoption Telegram channel.`,
 };
